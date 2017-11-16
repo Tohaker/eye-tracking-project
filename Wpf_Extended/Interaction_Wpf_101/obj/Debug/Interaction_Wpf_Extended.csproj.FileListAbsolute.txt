@@ -15,3 +15,5 @@ C:\Users\Miles\Google Drive\University\Year 3\Final Project\Example Eye Tracking
 C:\Users\Miles\Google Drive\University\Year 3\Final Project\Example Eye Tracking Programs\CoreSDK-master\samples\Wpf_Extended\Interaction_Wpf_101\obj\Debug\Interaction_Wpf_Extended.csproj.CoreCompileInputs.cache
 C:\Users\Miles\Google Drive\University\Year 3\Final Project\Example Eye Tracking Programs\CoreSDK-master\samples\Wpf_Extended\Interaction_Wpf_101\obj\Debug\Interaction_Wpf_Extended.exe
 C:\Users\Miles\Google Drive\University\Year 3\Final Project\Example Eye Tracking Programs\CoreSDK-master\samples\Wpf_Extended\Interaction_Wpf_101\obj\Debug\Interaction_Wpf_Extended.pdb
+F:\Miles\Documents\Final Project GIT\Wpf_Extended\Interaction_Wpf_101\obj\Debug\Interaction_Wpf_Extended.exe
+F:\Miles\Documents\Final Project GIT\Wpf_Extended\Interaction_Wpf_101\obj\Debug\Interaction_Wpf_Extended.pdb
