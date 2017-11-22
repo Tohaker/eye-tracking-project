@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,8 +16,10 @@ namespace GazeAwareLED
     public partial class GazeAwareForm : Form
     {
         private static System.Timers.Timer timer;
-        private string selectedButton;
+        private static SerialPort arduinoPort;
 
+        private string selectedButton;
+        
         public GazeAwareForm()
         {
             InitializeComponent();
@@ -28,6 +31,41 @@ namespace GazeAwareLED
             behaviorMap1.Add(btnOFF, new GazeAwareBehavior(OnGaze));
 
             TimerSetup();
+
+            OpenArduinoConnection();
+        }
+
+        private void OpenArduinoConnection()
+        {
+            if (arduinoPort == null)
+            {
+                arduinoPort = new SerialPort();
+                arduinoPort.PortName = "COM5";      // Hard coding in COM port - could also use 'login screen' solution at a later date
+                arduinoPort.BaudRate = 9600;        // Default for arduino, may allow user/dev to set at runtime at a later date
+                arduinoPort.DataBits = 8;
+                arduinoPort.Handshake = Handshake.None;
+
+                arduinoPort.ReadTimeout = 500;      // Set timouts
+                arduinoPort.WriteTimeout = 500;
+
+                arduinoPort.Open();                    
+            }            
+        }
+
+        private void CloseArduinoConnection()
+        {
+            if ((arduinoPort != null) && (arduinoPort.IsOpen))
+                arduinoPort.Close();
+        }
+
+        private void SendToArduino(string command)
+        {
+            if ((arduinoPort != null) && (arduinoPort.IsOpen))
+            {
+                arduinoPort.Write(command);
+            }
+            else
+                MessageBox.Show("Cannot Write to Arduino, check the connection", "Communication Error Occured");
         }
 
         private void TimerSetup()
@@ -70,6 +108,8 @@ namespace GazeAwareLED
                 stateBox.Invoke((MethodInvoker)delegate { stateBox.Checked = true; });
             else
                 stateBox.Checked = true;
+
+            SendToArduino("1");
         }
 
         private void LEDoff()
@@ -78,6 +118,8 @@ namespace GazeAwareLED
                 stateBox.Invoke((MethodInvoker)delegate { stateBox.Checked = false; });
             else
                 stateBox.Checked = false;
+
+            SendToArduino("0");
         }
     }
 }
