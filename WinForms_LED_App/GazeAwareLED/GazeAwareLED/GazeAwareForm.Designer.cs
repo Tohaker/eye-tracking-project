@@ -37,6 +37,8 @@
             // 
             // btnON
             // 
+            this.btnON.FlatAppearance.BorderSize = 0;
+            this.btnON.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnON.Location = new System.Drawing.Point(13, 13);
             this.btnON.Name = "btnON";
             this.btnON.Size = new System.Drawing.Size(259, 81);
@@ -46,6 +48,8 @@
             // 
             // btnOFF
             // 
+            this.btnOFF.FlatAppearance.BorderSize = 0;
+            this.btnOFF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOFF.Location = new System.Drawing.Point(12, 168);
             this.btnOFF.Name = "btnOFF";
             this.btnOFF.Size = new System.Drawing.Size(259, 81);
@@ -57,7 +61,7 @@
             // 
             this.stateBox.AutoSize = true;
             this.stateBox.Enabled = false;
-            this.stateBox.Location = new System.Drawing.Point(97, 124);
+            this.stateBox.Location = new System.Drawing.Point(99, 122);
             this.stateBox.Name = "stateBox";
             this.stateBox.Size = new System.Drawing.Size(75, 17);
             this.stateBox.TabIndex = 2;
@@ -73,6 +77,7 @@
             this.Controls.Add(this.btnOFF);
             this.Controls.Add(this.btnON);
             this.Name = "GazeAwareForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LED Gaze Control";
             this.ResumeLayout(false);
             this.PerformLayout();

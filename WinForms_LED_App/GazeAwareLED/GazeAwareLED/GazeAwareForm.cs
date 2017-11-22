@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO.Ports;
 using System.Linq;
@@ -18,8 +19,12 @@ namespace GazeAwareLED
         private static System.Timers.Timer timer;
         private static SerialPort arduinoPort;
 
-        private string selectedButton;
-        
+        private Button selectedButton;
+        private int gazeTime = 2000;
+
+        private bool btnOnSelected = false;
+        private bool btnOffSelected = false;
+
         public GazeAwareForm()
         {
             InitializeComponent();
@@ -70,7 +75,7 @@ namespace GazeAwareLED
 
         private void TimerSetup()
         {
-            timer = new System.Timers.Timer(2000);
+            timer = new System.Timers.Timer(gazeTime);
             timer.AutoReset = false;
             timer.Elapsed += OnTimedEvent;
         }
@@ -82,24 +87,36 @@ namespace GazeAwareLED
             {
                 if (e.HasGaze)
                 {
-                    button.BackColor = Color.Green;
-                    selectedButton = sender.ToString();
-                    timer.Enabled = true;
+                    if (!btnOnSelected || !btnOffSelected)
+                    {
+                        button.BackColor = Color.Green;
+                        selectedButton = button;
+                        timer.Enabled = true;
+                    }
                 }
                 else
                 {
                     button.BackColor = Color.Transparent;
                     timer.Enabled = false;
-                }
+                }  
             }
         }
 
         private void OnTimedEvent(object source, ElapsedEventArgs e)
         {
-            if (selectedButton.Contains("Turn LED On"))
+            if (selectedButton.ToString().Contains("Turn LED On"))
+            {
                 LEDon();
-            else if (selectedButton.Contains("Turn LED Off"))
+                btnOnSelected = true;
+                btnOffSelected = false;
+            }
+            else if (selectedButton.ToString().Contains("Turn LED Off"))
+            {
                 LEDoff();
+                btnOnSelected = false;
+                btnOffSelected = true;
+            }
+            selectedButton.BackColor = Color.Transparent;
         }
 
         private void LEDon()
@@ -108,7 +125,6 @@ namespace GazeAwareLED
                 stateBox.Invoke((MethodInvoker)delegate { stateBox.Checked = true; });
             else
                 stateBox.Checked = true;
-
             SendToArduino("1");
         }
 
