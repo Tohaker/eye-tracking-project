@@ -35,17 +35,16 @@ namespace GazeAwareLED
             behaviorMap1.Add(btnON, new GazeAwareBehavior(OnGaze));
             behaviorMap1.Add(btnOFF, new GazeAwareBehavior(OnGaze));
 
-            TimerSetup();
-
-            OpenArduinoConnection();
+            if ((gazeTime <= slideFixLength.Maximum) && (gazeTime >= slideFixLength.Minimum))       // In case someone makes a mistake in the hard coding of the starting value!!
+                slideFixLength.Value = gazeTime;
         }
 
-        private void OpenArduinoConnection()
+        private void OpenArduinoConnection(string portName)
         {
             if (arduinoPort == null)
             {
                 arduinoPort = new SerialPort();
-                arduinoPort.PortName = "COM5";      // Hard coding in COM port - could also use 'login screen' solution at a later date
+                arduinoPort.PortName = portName;      // Hard coding in COM port - could also use 'login screen' solution at a later date
                 arduinoPort.BaudRate = 9600;        // Default for arduino, may allow user/dev to set at runtime at a later date
                 arduinoPort.DataBits = 8;
                 arduinoPort.Handshake = Handshake.None;
@@ -80,8 +79,16 @@ namespace GazeAwareLED
             timer.Elapsed += OnTimedEvent;
         }
 
+        private void DisposeTimer()
+        {
+            if (timer != null)
+                timer.Dispose();
+        }
+
         private void OnGaze(object sender, GazeAwareEventArgs e)
         {
+            DisposeTimer(); // Remove any previous instances of the timer to keep resources free.
+            TimerSetup();   // Recalculate the timer as gazeTime could have changed.
             var button = sender as Button;
             if (button != null)
             {
@@ -136,6 +143,43 @@ namespace GazeAwareLED
                 stateBox.Checked = false;
 
             SendToArduino("0");
+        }
+
+        private void cmbComPort_DropDown(object sender, EventArgs e)
+        {
+            string[] portNames = SerialPort.GetPortNames();
+            cmbComPort.Items.Clear();
+            foreach ( var portName in portNames)
+            {
+                cmbComPort.Items.Add(portName);
+            }
+        }
+
+        private void cmbComPort_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedPort = cmbComPort.SelectedItem.ToString();
+            OpenArduinoConnection(selectedPort);
+        }
+
+        // Both of these methods alter the other - slider and numeric up-down are in sync
+        private void slideFixLength_ValueChanged(object sender, EventArgs e)
+        {
+            gazeTime = slideFixLength.Value;
+
+            if (numFixLength.InvokeRequired)
+                numFixLength.Invoke((MethodInvoker)delegate { numFixLength.Value = gazeTime; });
+            else
+                numFixLength.Value = gazeTime;
+        }
+
+        private void numFixLength_ValueChanged(object sender, EventArgs e)
+        {
+            gazeTime = (int)numFixLength.Value;
+
+            if (slideFixLength.InvokeRequired)
+                slideFixLength.Invoke((MethodInvoker)delegate { slideFixLength.Value = gazeTime; });
+            else
+                slideFixLength.Value = gazeTime;
         }
     }
 }
