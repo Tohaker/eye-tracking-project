@@ -49,8 +49,10 @@ namespace VehicleApp
 
                 this.outMessage = PackageMessage();     // Package the message up ready to be sent.
             }
-
-            //  TODO: Error Messages
+            else
+            {
+                throw new Exception("Invalid command entered.");
+            }
         }
 
         /// <summary>
@@ -67,8 +69,10 @@ namespace VehicleApp
                 this.command = msg & 15;            // AND with 15 to only take the first 4 bits.
                 this.data = (msg >> 4) & 2047;      // Shift 4 to bring to the LSB, then AND with 2047 to take the first 11 bits.
             }
-
-            //  TODO: Error Messages
+            else
+            {
+                throw new Exception("Message sender unrecognised.");
+            }
         }
 
         ~Message() { }
