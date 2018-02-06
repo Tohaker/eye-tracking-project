@@ -12,10 +12,20 @@ namespace VehicleApp
     {
         #region Private Members
         SerialPort serialPort;
+        string receivedMessage = "";
+        bool timeout = false;
         #endregion
 
         #region Public Properties
+        /// <summary>
+        /// The Message received by the Communicator.
+        /// </summary>
+        public string Message { get { return receivedMessage; } }
 
+        /// <summary>
+        /// Flag set if a timeout occured.
+        /// </summary>
+        public bool Timeout { get { return timeout; } }
         #endregion
 
         /// <summary>
@@ -41,19 +51,65 @@ namespace VehicleApp
         }
 
         /// <summary>
-        /// Open the serial connection and check connection has been made with a test message.
+        /// Open the serial connection.
         /// </summary>
         private void Open()
         {
-            serialPort.Open();
-            try
+            timeout = false;
+            if (!serialPort.IsOpen)
             {
-                byte[] buffer = new byte[2];
-                buffer[0] = 0xff;               // Ping command
-                serialPort.Write(buffer, 0, 1);
-                serialPort.Read(buffer, 1, 1);
+                try
+                {
+                    serialPort.Open();
+                }
+                catch (TimeoutException) { timeout = true; };       // If the port did not open, a read/write will timeout.
+            }            
+        }
+
+        /// <summary>
+        /// Closes the serial connection.
+        /// </summary>
+        private void Close()
+        {
+            timeout = false;
+            if (serialPort.IsOpen)
+            {
+                serialPort.Close();
+            }           
+        }
+
+        /// <summary>
+        /// Sends a message to the serial port, using the options set at object construction.
+        /// </summary>
+        /// <param name="message">The string to send.</param>
+        private void Send(string message)
+        {
+            timeout = false;
+            if (serialPort.IsOpen)
+            {
+                try
+                {
+                    serialPort.Write(message);
+                }
+                catch (TimeoutException) { timeout = true; };
             }
-            catch (TimeoutException) { };       // If the port did not open, a read/write will timeout.
-        } 
+                
+        }
+
+        /// <summary>
+        /// Checks the serial buffer for data to read.
+        /// </summary>
+        private void Receive()
+        {
+            timeout = false;
+            if (serialPort.IsOpen)
+            {
+                try
+                {
+                    receivedMessage = serialPort.ReadLine();
+                }
+                catch (TimeoutException) { timeout = true; };
+            }
+        }
     }
 }
