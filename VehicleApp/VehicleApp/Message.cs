@@ -12,6 +12,7 @@ namespace VehicleApp
         const int defaultData = 0;      // If no data is supplied, all zeros are filled instead.
         int data;
         int command;
+        int direction = 1;
         string outMessage = "";         // Create an empty string if Message is not created to be an output.
         #endregion
 
@@ -34,66 +35,65 @@ namespace VehicleApp
         #endregion
 
         /// <summary>
-        /// Create a message with optional data.
+        /// Create a message object to parse and create messages.
         /// </summary>
-        /// <param name="command">Command identification</param>
-        /// <param name="data">Payload data. Defaults to all 0s if unitialised.</param>
-        public Message (int command, int data = defaultData)
+        public Message ()
         {
-            if ((command >= 0) && (command < 16))       // Simple check to make sure the command is between 0000 and 1111
-            {
-                this.command = command;
 
-                if ((data >= 0) && (data < 2048))       // Similar check to make sure the data is 11 bits or fewer
-                    this.data = data;
-
-                this.outMessage = PackageMessage();     // Package the message up ready to be sent.
-            }
-            else
-            {
-                throw new Exception("Invalid command entered.");
-            }
-        }
-
-        /// <summary>
-        /// Overload of Message Class. Used to split a received message into its constituent parts.
-        /// </summary>
-        /// <param name="received">The string received that you wish to parse.</param>
-        public Message (string received)
-        {
-            int msg = Convert.ToInt16(received);
-            int direction = msg >> 15;              // Strip back all the trailing bits from the MSb.
-
-            if (direction == 0)                     // If the direction bit is 0, we know it has come from elsewhere.
-            {
-                this.command = msg & 15;            // AND with 15 to only take the first 4 bits.
-                this.data = (msg >> 4) & 2047;      // Shift 4 to bring to the LSB, then AND with 2047 to take the first 11 bits.
-            }
-            else
-            {
-                throw new Exception("Message sender unrecognised.");
-            }
         }
 
         ~Message() { }
 
         /// <summary>
-        /// Shifts the command and data into a 16-bit, string formatted message ready for sending.
+        /// Shifts the command and data into an 8-bit, string formatted message ready for sending.
         /// </summary>
         /// <returns></returns>
-        private string PackageMessage ()
+        private string PackageMessage (int command, int data = defaultData)
         {
             string output = "";
-            int temp;
+            int msg;
 
-            UInt16 msg = (ushort) command;  // Place command in LSB;
-            temp = (data << 4);             // Shift the data by 4 to place after the 4 bit command.
-            msg |= (ushort) temp;           // OR temp with the msg to move it into the right position.
-            temp = (1 << 15);               // Shift the 1 to the end of the 16 bit message, to show we sent it.
-            msg |= (ushort) temp;
+            if ((command >= 0) && (command < 16))       // Simple check to make sure the command is between 0000 and 1111
+            {
+                this.command = command;
 
-            output = msg.ToString();
+                if ((data >= 0) && (data < 7))          // Similar check to make sure the data is 3 bits or fewer
+                    this.data = data;
+
+                msg = command | (data << 4) | (direction << 7);
+                output = Convert.ToString(msg);
+            }
+            else
+            {
+                throw new Exception("Invalid command entered.");
+            }
+           
             return output;
+        }
+
+        /// <summary>
+        /// Packages up a string to send to the serial connection.
+        /// </summary>
+        /// <param name="command">The string to send.</param>
+        /// <returns></returns>
+        private string PackageMessage (string command)
+        {
+            return command;     // Simple now, but may become more complex later so the method can be used elsewhere.
+        }
+
+        /// <summary>
+        /// Determines whether a message was meant for the program and collects data from it. 
+        /// </summary>
+        /// <param name="received">The string received from the serial connection.</param>
+        private void ParseMessage (string received)
+        {
+            int rec = Convert.ToInt16(received);
+            int MSB = rec >> 7;     // Assuming an 8 bit value is received the MSByte will be all 0s.
+            if (MSB == 0)           // Check that the message has come from the Arduino.
+            {
+                this.command = rec & 0x0F;  // Mask first 4 bits to retrieve them.
+                this.data = rec & 0x8F;     // Mask bits 4 - 6 to retrieve them. 
+            }
         }
 
     }
