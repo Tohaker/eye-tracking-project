@@ -13,25 +13,18 @@ namespace VehicleApp
         int data;
         int command;
         int direction = 1;
-        string outMessage = "";         // Create an empty string if Message is not created to be an output.
         #endregion
 
         #region Public Properties
         /// <summary>
         /// Payload data for message.
         /// </summary>
-        public int Data { get { return data; } }
+        public int GetData { get { return data; } }
 
         /// <summary>
         /// Command identifier.
         /// </summary>
-        public int Command { get { return command; } }
-
-        /// <summary>
-        /// The message to send out. Will not return anything if the Object was created with a missing command.
-        /// </summary>
-        public string OutputMessage
-        { get { return outMessage; } }
+        public int GetCommand { get { return command; } }
         #endregion
 
         /// <summary>
@@ -48,16 +41,16 @@ namespace VehicleApp
         /// Shifts the command and data into an 8-bit, string formatted message ready for sending.
         /// </summary>
         /// <returns></returns>
-        private string PackageMessage (int command, int data = defaultData)
+        public string PackageMessage (int command, int data = defaultData)
         {
             string output = "";
             int msg;
 
-            if ((command >= 0) && (command < 16))       // Simple check to make sure the command is between 0000 and 1111
+            if ((command >= 0) && (command <= 16))       // Simple check to make sure the command is between 0000 and 1111
             {
                 this.command = command;
 
-                if ((data >= 0) && (data < 7))          // Similar check to make sure the data is 3 bits or fewer
+                if ((data >= 0) && (data <= 7))          // Similar check to make sure the data is 3 bits or fewer
                     this.data = data;
 
                 msg = command | (data << 4) | (direction << 7);
@@ -76,7 +69,7 @@ namespace VehicleApp
         /// </summary>
         /// <param name="command">The string to send.</param>
         /// <returns></returns>
-        private string PackageMessage (string command)
+        public string PackageMessage (string command)
         {
             return command;     // Simple now, but may become more complex later so the method can be used elsewhere.
         }
@@ -85,7 +78,7 @@ namespace VehicleApp
         /// Determines whether a message was meant for the program and collects data from it. 
         /// </summary>
         /// <param name="received">The string received from the serial connection.</param>
-        private void ParseMessage (string received)
+        public void ParseMessage (string received)
         {
             int rec = Convert.ToInt16(received);
             int MSB = rec >> 7;     // Assuming an 8 bit value is received the MSByte will be all 0s.
