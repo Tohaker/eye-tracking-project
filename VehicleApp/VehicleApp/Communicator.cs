@@ -12,16 +12,10 @@ namespace VehicleApp
     {
         #region Private Members
         SerialPort serialPort;
-        string receivedMessage = "";
         bool timeout = false;
         #endregion
 
         #region Public Properties
-        /// <summary>
-        /// The Message received by the Communicator.
-        /// </summary>
-        public string Message { get { return receivedMessage; } }
-
         /// <summary>
         /// Flag set if a timeout occured.
         /// </summary>
@@ -53,7 +47,7 @@ namespace VehicleApp
         /// <summary>
         /// Open the serial connection.
         /// </summary>
-        private void Open()
+        public void Open()
         {
             timeout = false;
             if (!serialPort.IsOpen)
@@ -67,9 +61,21 @@ namespace VehicleApp
         }
 
         /// <summary>
+        /// Wraps the IsOpen method from the Serial Connection into the Communicator.
+        /// </summary>
+        /// <returns>Returns whether it is open or not.</returns>
+        public bool IsOpen()
+        {
+            if (serialPort.IsOpen)
+                return true;
+            else
+                return false;
+        }
+
+        /// <summary>
         /// Closes the serial connection.
         /// </summary>
-        private void Close()
+        public void Close()
         {
             timeout = false;
             if (serialPort.IsOpen)
@@ -82,7 +88,7 @@ namespace VehicleApp
         /// Sends a message to the serial port, using the options set at object construction.
         /// </summary>
         /// <param name="message">The string to send.</param>
-        private void Send(string message)
+        public void Send(string message)
         {
             timeout = false;
             if (serialPort.IsOpen)
@@ -99,17 +105,20 @@ namespace VehicleApp
         /// <summary>
         /// Checks the serial buffer for data to read.
         /// </summary>
-        private void Receive()
+        public string Receive()
         {
             timeout = false;
+            string received = "";
             if (serialPort.IsOpen)
             {
                 try
                 {
-                    receivedMessage = serialPort.ReadLine();
+                    received = serialPort.ReadLine();
                 }
                 catch (TimeoutException) { timeout = true; };
             }
+
+            return received;
         }
     }
 }
