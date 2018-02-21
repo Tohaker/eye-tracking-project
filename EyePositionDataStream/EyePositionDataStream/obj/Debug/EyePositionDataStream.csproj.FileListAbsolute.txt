@@ -1,0 +1,10 @@
+c:\users\miles\source\repos\EyePositionDataStream\EyePositionDataStream\bin\Debug\Tobii.EyeX.Client.dll
+c:\users\miles\source\repos\EyePositionDataStream\EyePositionDataStream\bin\Debug\EyePositionDataStream.exe.config
+c:\users\miles\source\repos\EyePositionDataStream\EyePositionDataStream\bin\Debug\EyePositionDataStream.exe
+c:\users\miles\source\repos\EyePositionDataStream\EyePositionDataStream\bin\Debug\EyePositionDataStream.pdb
+c:\users\miles\source\repos\EyePositionDataStream\EyePositionDataStream\bin\Debug\EyeXFramework.dll
+c:\users\miles\source\repos\EyePositionDataStream\EyePositionDataStream\bin\Debug\Tobii.EyeX.Client.Net20.dll
+c:\users\miles\source\repos\EyePositionDataStream\EyePositionDataStream\obj\Debug\EyePositionDataStream.csprojResolveAssemblyReference.cache
+c:\users\miles\source\repos\EyePositionDataStream\EyePositionDataStream\obj\Debug\EyePositionDataStream.csproj.CoreCompileInputs.cache
+c:\users\miles\source\repos\EyePositionDataStream\EyePositionDataStream\obj\Debug\EyePositionDataStream.exe
+c:\users\miles\source\repos\EyePositionDataStream\EyePositionDataStream\obj\Debug\EyePositionDataStream.pdb
