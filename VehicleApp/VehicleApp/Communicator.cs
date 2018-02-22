@@ -35,10 +35,12 @@ namespace VehicleApp
 
             serialPort.PortName = COM;
             serialPort.BaudRate = baudRate;
-            serialPort.Parity = (Parity)parity;
+            //serialPort.Parity = (Parity)parity;
 
             serialPort.ReadTimeout = 500;       // Set the timeouts to 500ms each.
             serialPort.WriteTimeout = 500;
+
+            
 
             // TODO: Error Checking
             //       Determine required settings
