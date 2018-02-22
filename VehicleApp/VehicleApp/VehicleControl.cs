@@ -8,10 +8,11 @@ namespace VehicleApp
 {
     class VehicleControl
     {
-        #region Private Variables
+        #region Private Members
         private Message message;
         private Communicator connection;
-        private string receivedMessage;
+        private string sentMessage = "";
+        private string receivedMessage = "";
 
         private int forwardCmd  = 0;
         private int reverseCmd  = 1;
@@ -24,6 +25,9 @@ namespace VehicleApp
         #endregion
 
         #region Public Properties
+        public string SentMessage { get { return sentMessage; } }
+
+        public string ReceivedMessage { get { return receivedMessage; } }
         #endregion
         public VehicleControl(string COM)
         {
@@ -44,11 +48,12 @@ namespace VehicleApp
         /// <param name="command">Command to send (between 0 and 16).</param>
         /// <param name="data">Optional data to send with the command.</param>
         /// <returns></returns>
-        private bool SendMessage(int command, int data = 0)
+        public bool SendMessage(int command, int data = 0)
         {
             string msg;
             bool success;
             msg = message.PackageMessage(command, data);
+            sentMessage = msg;
 
             connection.Open();
             
@@ -65,10 +70,37 @@ namespace VehicleApp
             return success;
         }
 
+
+        /// <summary>
+        /// Bundles a string up and sends it to the communicator.
+        /// </summary>
+        /// <param name="data">Data to be sent.</param>
+        /// <returns></returns>
+        public bool SendMessage(string data)
+        {
+            string msg = message.PackageMessage(data);
+            bool success;
+            sentMessage = msg;
+
+            connection.Open();
+
+            if (!connection.Timeout)    // Check the internal flag to see if the connection was actually opened.
+            {
+                connection.Send(msg);
+                success = true;
+            }
+            else
+            {
+                success = false;
+            }
+
+            return success;
+        }
+
         /// <summary>
         /// Tries to receive a message then passes it to the message class to parse data.
         /// </summary>
-        private void ReceiveMessage()
+        public void ReceiveMessage()
         {
             receivedMessage = connection.Receive();
 
@@ -76,11 +108,24 @@ namespace VehicleApp
             {
                 receivedMessage = connection.Receive();
             }
-
-            if (receivedMessage != "")
-            {
+            else
                 message.ParseMessage(receivedMessage);
-            }
+        }
+
+        /// <summary>
+        /// Opens the Communication channel.
+        /// </summary>
+        public void Open()
+        {
+            connection.Open();
+        }
+
+        /// <summary>
+        /// Closes the Communication channel.
+        /// </summary>
+        public void Close()
+        {
+            connection.Close();
         }
 
         public bool Forward()
