@@ -73,40 +73,44 @@ namespace VehicleApp
 
         private void btnCmd1_Click(object sender, EventArgs e)
         {
-            SendMsg(0);
+            controller.Forward();
+            rtbConsole.AppendText("Sent: " + controller.BinarySentMessage + "\n");
+            rtbConsole.AppendText("Received: " + controller.BinaryReceivedMessage + "\n");
         }
 
         private void btnCmd2_Click(object sender, EventArgs e)
         {
-            SendMsg(1);
+            controller.Reverse();
+            rtbConsole.AppendText("Sent: " + controller.BinarySentMessage + "\n");
+            rtbConsole.AppendText("Received: " + controller.BinaryReceivedMessage + "\n");
         }
 
         private void btnCmd3_Click(object sender, EventArgs e)
         {
-            SendMsg(2);
+            controller.Brake();           
+            rtbConsole.AppendText("Sent: " + controller.BinarySentMessage + "\n");
+            rtbConsole.AppendText("Received: " + controller.BinaryReceivedMessage + "\n");
         }
 
         private void btnCmd4_Click(object sender, EventArgs e)
         {
-            SendMsg(3);
+            controller.Left();
+            rtbConsole.AppendText("Sent: " + controller.BinarySentMessage + "\n");
+            rtbConsole.AppendText("Received: " + controller.BinaryReceivedMessage + "\n");
         }
 
         private void btnCmd5_Click(object sender, EventArgs e)
         {
-            SendMsg(4);
+            controller.Right();
+            rtbConsole.AppendText("Sent: " + controller.BinarySentMessage + "\n");
+            rtbConsole.AppendText("Received: " + controller.BinaryReceivedMessage + "\n");
         }
 
         private void btnCmd6_Click(object sender, EventArgs e)
         {
-            SendMsg(5);
-        }
-
-        private void SendMsg(int cmd, int data = 0)
-        {
-            controller.SendMessage(cmd, data);
-            rtbConsole.AppendText("Sent: " + controller.SentMessage.ToString() + "\n");
-            controller.ReceiveMessage();
-            rtbConsole.AppendText("Received: " + controller.ReceivedMessage.ToString() + "\n");
+            controller.Ping();
+            rtbConsole.AppendText("Sent: " + controller.BinarySentMessage + "\n");
+            rtbConsole.AppendText("Received: " + controller.BinaryReceivedMessage + "\n");
         }
 
         private void btnSend_Click(object sender, EventArgs e)
@@ -114,9 +118,9 @@ namespace VehicleApp
             if (txtMessageBox.Text != "")
             {
                 controller.SendMessage(txtMessageBox.Text);
-                rtbConsole.AppendText("Sent: " + controller.SentMessage.ToString() + "\n");
+                rtbConsole.AppendText("Sent: " + controller.SentMessage + "\n");
                 controller.ReceiveMessage();
-                rtbConsole.AppendText("Received: " + controller.ReceivedMessage.ToString() + "\n");
+                rtbConsole.AppendText("Received: " + controller.ReceivedMessage + "\n");
             }            
         }
     }

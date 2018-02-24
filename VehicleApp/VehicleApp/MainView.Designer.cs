@@ -40,6 +40,7 @@
             this.btnCmd4 = new System.Windows.Forms.Button();
             this.btnCmd3 = new System.Windows.Forms.Button();
             this.btnCmd2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupCommands.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,10 +65,10 @@
             // 
             // rtbConsole
             // 
-            this.rtbConsole.Location = new System.Drawing.Point(108, 12);
+            this.rtbConsole.Location = new System.Drawing.Point(185, 12);
             this.rtbConsole.Name = "rtbConsole";
             this.rtbConsole.ReadOnly = true;
-            this.rtbConsole.Size = new System.Drawing.Size(301, 440);
+            this.rtbConsole.Size = new System.Drawing.Size(224, 440);
             this.rtbConsole.TabIndex = 2;
             this.rtbConsole.Text = "";
             // 
@@ -94,12 +95,13 @@
             this.btnCmd1.Name = "btnCmd1";
             this.btnCmd1.Size = new System.Drawing.Size(75, 23);
             this.btnCmd1.TabIndex = 5;
-            this.btnCmd1.Text = "Command 1";
+            this.btnCmd1.Text = "Forward";
             this.btnCmd1.UseVisualStyleBackColor = true;
             this.btnCmd1.Click += new System.EventHandler(this.btnCmd1_Click);
             // 
             // groupCommands
             // 
+            this.groupCommands.Controls.Add(this.button1);
             this.groupCommands.Controls.Add(this.btnCmd6);
             this.groupCommands.Controls.Add(this.btnCmd5);
             this.groupCommands.Controls.Add(this.btnCmd4);
@@ -108,18 +110,18 @@
             this.groupCommands.Controls.Add(this.btnCmd1);
             this.groupCommands.Location = new System.Drawing.Point(13, 90);
             this.groupCommands.Name = "groupCommands";
-            this.groupCommands.Size = new System.Drawing.Size(89, 195);
+            this.groupCommands.Size = new System.Drawing.Size(166, 224);
             this.groupCommands.TabIndex = 6;
             this.groupCommands.TabStop = false;
             this.groupCommands.Text = "Commands";
             // 
             // btnCmd6
             // 
-            this.btnCmd6.Location = new System.Drawing.Point(6, 164);
+            this.btnCmd6.Location = new System.Drawing.Point(6, 193);
             this.btnCmd6.Name = "btnCmd6";
             this.btnCmd6.Size = new System.Drawing.Size(75, 23);
             this.btnCmd6.TabIndex = 10;
-            this.btnCmd6.Text = "Command 6";
+            this.btnCmd6.Text = "Ping";
             this.btnCmd6.UseVisualStyleBackColor = true;
             this.btnCmd6.Click += new System.EventHandler(this.btnCmd6_Click);
             // 
@@ -129,7 +131,7 @@
             this.btnCmd5.Name = "btnCmd5";
             this.btnCmd5.Size = new System.Drawing.Size(75, 23);
             this.btnCmd5.TabIndex = 9;
-            this.btnCmd5.Text = "Command 5";
+            this.btnCmd5.Text = "Right";
             this.btnCmd5.UseVisualStyleBackColor = true;
             this.btnCmd5.Click += new System.EventHandler(this.btnCmd5_Click);
             // 
@@ -139,7 +141,7 @@
             this.btnCmd4.Name = "btnCmd4";
             this.btnCmd4.Size = new System.Drawing.Size(75, 23);
             this.btnCmd4.TabIndex = 8;
-            this.btnCmd4.Text = "Command 4";
+            this.btnCmd4.Text = "Left";
             this.btnCmd4.UseVisualStyleBackColor = true;
             this.btnCmd4.Click += new System.EventHandler(this.btnCmd4_Click);
             // 
@@ -149,7 +151,7 @@
             this.btnCmd3.Name = "btnCmd3";
             this.btnCmd3.Size = new System.Drawing.Size(75, 23);
             this.btnCmd3.TabIndex = 7;
-            this.btnCmd3.Text = "Command 3";
+            this.btnCmd3.Text = "Brake";
             this.btnCmd3.UseVisualStyleBackColor = true;
             this.btnCmd3.Click += new System.EventHandler(this.btnCmd3_Click);
             // 
@@ -159,9 +161,18 @@
             this.btnCmd2.Name = "btnCmd2";
             this.btnCmd2.Size = new System.Drawing.Size(75, 23);
             this.btnCmd2.TabIndex = 6;
-            this.btnCmd2.Text = "Command 2";
+            this.btnCmd2.Text = "Reverse";
             this.btnCmd2.UseVisualStyleBackColor = true;
             this.btnCmd2.Click += new System.EventHandler(this.btnCmd2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(6, 164);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "SetSpeed";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // MainView
             // 
@@ -174,6 +185,8 @@
             this.Controls.Add(this.rtbConsole);
             this.Controls.Add(this.btnConnect);
             this.Controls.Add(this.cmbComSelect);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "MainView";
             this.Text = "Form1";
             this.groupCommands.ResumeLayout(false);
@@ -196,6 +209,7 @@
         private System.Windows.Forms.Button btnCmd4;
         private System.Windows.Forms.Button btnCmd3;
         private System.Windows.Forms.Button btnCmd2;
+        private System.Windows.Forms.Button button1;
     }
 }
 
