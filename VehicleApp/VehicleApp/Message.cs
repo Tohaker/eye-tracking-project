@@ -19,12 +19,12 @@ namespace VehicleApp
         /// <summary>
         /// Payload data for message.
         /// </summary>
-        public int GetData { get { return data; } }
+        public int Data { get { return data; } }
 
         /// <summary>
         /// Command identifier.
         /// </summary>
-        public int GetCommand { get { return command; } }
+        public int Command { get { return command; } }
         #endregion
 
         /// <summary>
@@ -80,18 +80,9 @@ namespace VehicleApp
         /// <param name="received">The string received from the serial connection.</param>
         public void ParseMessage (string received)
         {
-            string str;
             int rec;
 
-            if (received.Substring(0, 15) == "I have received:")
-            {
-                str = received.Substring(15);
-                rec = Convert.ToInt16(str);
-            }
-            else
-            {
-                rec = Convert.ToInt16(received);
-            }    
+            rec = Convert.ToInt16(received);
             
             int MSB = rec >> 7;     // Assuming an 8 bit value is received the MSByte will be all 0s.
             if (MSB == 0)           // Check that the message has come from the Arduino.
