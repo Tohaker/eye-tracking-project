@@ -28,7 +28,26 @@ namespace VehicleApp
         public string SentMessage { get { return sentMessage; } }
 
         public string ReceivedMessage { get { return receivedMessage; } }
+
+        public string BinarySentMessage
+        {
+            get
+            {
+                int sentValue = Convert.ToInt32(sentMessage);
+                return Convert.ToString(sentValue, 2).PadLeft(8, '0');  // Converts the string to an 8 bit binary representation.
+            }
+        }
+
+        public string BinaryReceivedMessage
+        {
+            get
+            {
+                int recValue = Convert.ToInt32(receivedMessage);
+                return Convert.ToString(recValue, 2).PadLeft(8, '0');   // Converts the string to an 8 bit binary representation.
+            }
+        }
         #endregion
+
         public VehicleControl(string COM)
         {
             if (message == null)
@@ -41,6 +60,8 @@ namespace VehicleApp
                 connection = new Communicator(COM);
             }
         }
+
+        ~VehicleControl() { }
         
         /// <summary>
         /// Bundles a message up and sends it to the communicator.
@@ -133,7 +154,7 @@ namespace VehicleApp
             if (SendMessage(forwardCmd))
             {
                 ReceiveMessage();
-                if (message.GetCommand == forwardCmd)
+                if (message.Command == forwardCmd)
                 {
                     return true;
                 }
@@ -146,7 +167,7 @@ namespace VehicleApp
             if (SendMessage(reverseCmd))
             {
                 ReceiveMessage();
-                if (message.GetCommand == reverseCmd)
+                if (message.Command == reverseCmd)
                 {
                     return true;
                 }
@@ -159,7 +180,7 @@ namespace VehicleApp
             if (SendMessage(brakeCmd))
             {
                 ReceiveMessage();
-                if (message.GetCommand == brakeCmd)
+                if (message.Command == brakeCmd)
                 {
                     return true;
                 }
@@ -172,7 +193,7 @@ namespace VehicleApp
             if (SendMessage(leftCmd))
             {
                 ReceiveMessage();
-                if (message.GetCommand == leftCmd)
+                if (message.Command == leftCmd)
                 {
                     return true;
                 }
@@ -185,7 +206,7 @@ namespace VehicleApp
             if (SendMessage(rightCmd))
             {
                 ReceiveMessage();
-                if (message.GetCommand == rightCmd)
+                if (message.Command == rightCmd)
                 {
                     return true;
                 }
@@ -198,7 +219,7 @@ namespace VehicleApp
             if (SendMessage(speedCmd, speed))
             {
                 ReceiveMessage();
-                if ((message.GetCommand == speedCmd) && (message.GetData == speed))
+                if ((message.Command == speedCmd) && (message.Data == speed))
                 {
                     return true; // Check that we have the right speed returned.
                 }
@@ -211,7 +232,7 @@ namespace VehicleApp
             if (SendMessage(pingCmd, pingData))
             {
                 ReceiveMessage();
-                if ((message.GetCommand == pingCmd) && (message.GetData == pingData))
+                if ((message.Command == pingCmd) && (message.Data == pingData))
                 {
                     return true;
                 }
