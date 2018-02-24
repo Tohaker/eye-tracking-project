@@ -28,23 +28,24 @@ namespace VehicleApp
         /// <param name="COM">COM Port to be used by this object.</param>
         /// <param name="baudRate">Baud Rate: Defaults to 9600.</param>
         /// <param name="parity">Parity: Defaults to 8.</param>
-        public Communicator (string COM, int baudRate = 9600, int parity = 8)
+        public Communicator (string COM, int baudRate = 9600)
         {
             if (serialPort == null)             // Make a new port, if one already exists we are simply overwriting values.
                 serialPort = new SerialPort();
 
             serialPort.PortName = COM;
             serialPort.BaudRate = baudRate;
-            //serialPort.Parity = (Parity)parity;
 
             serialPort.ReadTimeout = 500;       // Set the timeouts to 500ms each.
             serialPort.WriteTimeout = 500;
 
-            
+            serialPort.NewLine = "\r\n";         // The Arduino sends both \r\n at a new line, so we must look for this when perfoming .ReadLine()
 
             // TODO: Error Checking
             //       Determine required settings
         }
+
+        ~Communicator() { }
 
         /// <summary>
         /// Open the serial connection.
@@ -97,7 +98,7 @@ namespace VehicleApp
             {
                 try
                 {
-                    serialPort.Write(message);
+                    serialPort.WriteLine(message);
                 }
                 catch (TimeoutException) { timeout = true; };
             }
@@ -117,9 +118,8 @@ namespace VehicleApp
                 {
                     received = serialPort.ReadLine();
                 }
-                catch (TimeoutException) { timeout = true; };
+                catch (TimeoutException) { timeout = true; }
             }
-
             return received;
         }
     }
