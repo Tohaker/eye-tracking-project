@@ -1,6 +1,6 @@
 ﻿namespace VehicleApp
 {
-    partial class MainView
+    partial class DataLog
     {
         /// <summary>
         /// Required designer variable.
@@ -36,12 +36,15 @@
             this.btnCmd1 = new System.Windows.Forms.Button();
             this.groupCommands = new System.Windows.Forms.GroupBox();
             this.btnCmd6 = new System.Windows.Forms.Button();
+            this.btnCmd7 = new System.Windows.Forms.Button();
             this.btnCmd5 = new System.Windows.Forms.Button();
             this.btnCmd4 = new System.Windows.Forms.Button();
             this.btnCmd3 = new System.Windows.Forms.Button();
             this.btnCmd2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.numSpeed = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupCommands.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numSpeed)).BeginInit();
             this.SuspendLayout();
             // 
             // cmbComSelect
@@ -65,23 +68,23 @@
             // 
             // rtbConsole
             // 
-            this.rtbConsole.Location = new System.Drawing.Point(185, 12);
+            this.rtbConsole.Location = new System.Drawing.Point(185, 41);
             this.rtbConsole.Name = "rtbConsole";
             this.rtbConsole.ReadOnly = true;
-            this.rtbConsole.Size = new System.Drawing.Size(224, 440);
+            this.rtbConsole.Size = new System.Drawing.Size(224, 411);
             this.rtbConsole.TabIndex = 2;
             this.rtbConsole.Text = "";
             // 
             // txtMessageBox
             // 
-            this.txtMessageBox.Location = new System.Drawing.Point(108, 458);
+            this.txtMessageBox.Location = new System.Drawing.Point(185, 458);
             this.txtMessageBox.Name = "txtMessageBox";
-            this.txtMessageBox.Size = new System.Drawing.Size(205, 20);
+            this.txtMessageBox.Size = new System.Drawing.Size(140, 20);
             this.txtMessageBox.TabIndex = 3;
             // 
             // btnSend
             // 
-            this.btnSend.Location = new System.Drawing.Point(319, 456);
+            this.btnSend.Location = new System.Drawing.Point(331, 456);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(75, 23);
             this.btnSend.TabIndex = 4;
@@ -101,8 +104,9 @@
             // 
             // groupCommands
             // 
-            this.groupCommands.Controls.Add(this.button1);
+            this.groupCommands.Controls.Add(this.numSpeed);
             this.groupCommands.Controls.Add(this.btnCmd6);
+            this.groupCommands.Controls.Add(this.btnCmd7);
             this.groupCommands.Controls.Add(this.btnCmd5);
             this.groupCommands.Controls.Add(this.btnCmd4);
             this.groupCommands.Controls.Add(this.btnCmd3);
@@ -117,13 +121,23 @@
             // 
             // btnCmd6
             // 
-            this.btnCmd6.Location = new System.Drawing.Point(6, 193);
+            this.btnCmd6.Location = new System.Drawing.Point(6, 164);
             this.btnCmd6.Name = "btnCmd6";
             this.btnCmd6.Size = new System.Drawing.Size(75, 23);
-            this.btnCmd6.TabIndex = 10;
-            this.btnCmd6.Text = "Ping";
+            this.btnCmd6.TabIndex = 11;
+            this.btnCmd6.Text = "SetSpeed";
             this.btnCmd6.UseVisualStyleBackColor = true;
             this.btnCmd6.Click += new System.EventHandler(this.btnCmd6_Click);
+            // 
+            // btnCmd7
+            // 
+            this.btnCmd7.Location = new System.Drawing.Point(6, 193);
+            this.btnCmd7.Name = "btnCmd7";
+            this.btnCmd7.Size = new System.Drawing.Size(75, 23);
+            this.btnCmd7.TabIndex = 10;
+            this.btnCmd7.Text = "Ping";
+            this.btnCmd7.UseVisualStyleBackColor = true;
+            this.btnCmd7.Click += new System.EventHandler(this.btnCmd7_Click);
             // 
             // btnCmd5
             // 
@@ -165,20 +179,33 @@
             this.btnCmd2.UseVisualStyleBackColor = true;
             this.btnCmd2.Click += new System.EventHandler(this.btnCmd2_Click);
             // 
-            // button1
+            // numSpeed
             // 
-            this.button1.Location = new System.Drawing.Point(6, 164);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "SetSpeed";
-            this.button1.UseVisualStyleBackColor = true;
+            this.numSpeed.Location = new System.Drawing.Point(87, 167);
+            this.numSpeed.Maximum = new decimal(new int[] {
+            7,
+            0,
+            0,
+            0});
+            this.numSpeed.Name = "numSpeed";
+            this.numSpeed.Size = new System.Drawing.Size(73, 20);
+            this.numSpeed.TabIndex = 12;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(185, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(51, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Data Log";
             // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(418, 489);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.groupCommands);
             this.Controls.Add(this.btnSend);
             this.Controls.Add(this.txtMessageBox);
@@ -188,8 +215,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "MainView";
-            this.Text = "Form1";
+            this.Text = "Data Log";
             this.groupCommands.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numSpeed)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -204,12 +232,14 @@
         private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.Button btnCmd1;
         private System.Windows.Forms.GroupBox groupCommands;
-        private System.Windows.Forms.Button btnCmd6;
+        private System.Windows.Forms.Button btnCmd7;
         private System.Windows.Forms.Button btnCmd5;
         private System.Windows.Forms.Button btnCmd4;
         private System.Windows.Forms.Button btnCmd3;
         private System.Windows.Forms.Button btnCmd2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnCmd6;
+        private System.Windows.Forms.NumericUpDown numSpeed;
+        private System.Windows.Forms.Label label1;
     }
 }
 

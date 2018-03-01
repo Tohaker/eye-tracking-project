@@ -11,12 +11,12 @@ using System.Windows.Forms;
 
 namespace VehicleApp
 {
-    public partial class MainView : Form
+    public partial class DataLog : Form
     {
         #region Private Members
         private VehicleControl controller;
         #endregion
-        public MainView()
+        public DataLog()
         {
             InitializeComponent();
 
@@ -59,6 +59,17 @@ namespace VehicleApp
             
         }
 
+        private void ClearButtonColours()
+        {
+            btnCmd1.BackColor = Color.Transparent;
+            btnCmd2.BackColor = Color.Transparent;
+            btnCmd3.BackColor = Color.Transparent;
+            btnCmd4.BackColor = Color.Transparent;
+            btnCmd5.BackColor = Color.Transparent;
+            btnCmd6.BackColor = Color.Transparent;
+            btnCmd7.BackColor = Color.Transparent;
+        }
+
         private void EnableButtons(bool state)
         {
             btnCmd1.Enabled = state;
@@ -67,48 +78,77 @@ namespace VehicleApp
             btnCmd4.Enabled = state;
             btnCmd5.Enabled = state;
             btnCmd6.Enabled = state;
+            btnCmd7.Enabled = state;
 
             btnSend.Enabled = state;
         }
 
         private void btnCmd1_Click(object sender, EventArgs e)
         {
-            controller.Forward();
+            ClearButtonColours();
+            if (controller.Forward())
+                btnCmd1.BackColor = Color.Green;
+
             rtbConsole.AppendText("Sent: " + controller.BinarySentMessage + "\n");
             rtbConsole.AppendText("Received: " + controller.BinaryReceivedMessage + "\n");
         }
 
         private void btnCmd2_Click(object sender, EventArgs e)
         {
-            controller.Reverse();
+            ClearButtonColours();
+            if (controller.Reverse())
+                btnCmd2.BackColor = Color.Green;
+
             rtbConsole.AppendText("Sent: " + controller.BinarySentMessage + "\n");
             rtbConsole.AppendText("Received: " + controller.BinaryReceivedMessage + "\n");
         }
 
         private void btnCmd3_Click(object sender, EventArgs e)
         {
-            controller.Brake();           
+            ClearButtonColours();
+            if (controller.Brake())
+                btnCmd3.BackColor = Color.Green;
+
             rtbConsole.AppendText("Sent: " + controller.BinarySentMessage + "\n");
             rtbConsole.AppendText("Received: " + controller.BinaryReceivedMessage + "\n");
         }
 
         private void btnCmd4_Click(object sender, EventArgs e)
         {
-            controller.Left();
+            ClearButtonColours();
+            if (controller.Left())
+                btnCmd4.BackColor = Color.Green;
+
             rtbConsole.AppendText("Sent: " + controller.BinarySentMessage + "\n");
             rtbConsole.AppendText("Received: " + controller.BinaryReceivedMessage + "\n");
         }
 
         private void btnCmd5_Click(object sender, EventArgs e)
         {
-            controller.Right();
+            ClearButtonColours();
+            if (controller.Right())
+                btnCmd5.BackColor = Color.Green;
+
             rtbConsole.AppendText("Sent: " + controller.BinarySentMessage + "\n");
             rtbConsole.AppendText("Received: " + controller.BinaryReceivedMessage + "\n");
         }
 
         private void btnCmd6_Click(object sender, EventArgs e)
         {
-            controller.Ping();
+            ClearButtonColours();
+            if (controller.SetSpeed((int)numSpeed.Value))
+                btnCmd6.BackColor = Color.Green;
+
+            rtbConsole.AppendText("Sent: " + controller.BinarySentMessage + "\n");
+            rtbConsole.AppendText("Received: " + controller.BinaryReceivedMessage + "\n");
+        }
+
+        private void btnCmd7_Click(object sender, EventArgs e)
+        {
+            ClearButtonColours();
+            if (controller.Ping())
+                btnCmd7.BackColor = Color.Green;
+
             rtbConsole.AppendText("Sent: " + controller.BinarySentMessage + "\n");
             rtbConsole.AppendText("Received: " + controller.BinaryReceivedMessage + "\n");
         }
