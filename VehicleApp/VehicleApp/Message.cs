@@ -88,7 +88,7 @@ namespace VehicleApp
             if (MSB == 0)           // Check that the message has come from the Arduino.
             {
                 this.command = rec & 0x0F;  // Mask first 4 bits to retrieve them.
-                this.data = rec & 0x8F;     // Mask bits 4 - 6 to retrieve them. 
+                this.data = (rec & 0x70) >> 4;     // Mask bits 4 - 6 to retrieve them. 
             }
         }
 
