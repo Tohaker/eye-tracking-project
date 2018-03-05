@@ -2,9 +2,15 @@ F:\Miles\Documents\Final Project GIT\VehicleApp\VehicleApp\bin\Debug\VehicleApp.
 F:\Miles\Documents\Final Project GIT\VehicleApp\VehicleApp\bin\Debug\VehicleApp.exe
 F:\Miles\Documents\Final Project GIT\VehicleApp\VehicleApp\bin\Debug\VehicleApp.pdb
 F:\Miles\Documents\Final Project GIT\VehicleApp\VehicleApp\obj\Debug\VehicleApp.csprojResolveAssemblyReference.cache
-F:\Miles\Documents\Final Project GIT\VehicleApp\VehicleApp\obj\Debug\VehicleApp.MainView.resources
 F:\Miles\Documents\Final Project GIT\VehicleApp\VehicleApp\obj\Debug\VehicleApp.Properties.Resources.resources
 F:\Miles\Documents\Final Project GIT\VehicleApp\VehicleApp\obj\Debug\VehicleApp.csproj.GenerateResource.Cache
 F:\Miles\Documents\Final Project GIT\VehicleApp\VehicleApp\obj\Debug\VehicleApp.csproj.CoreCompileInputs.cache
 F:\Miles\Documents\Final Project GIT\VehicleApp\VehicleApp\obj\Debug\VehicleApp.exe
 F:\Miles\Documents\Final Project GIT\VehicleApp\VehicleApp\obj\Debug\VehicleApp.pdb
+F:\Miles\Documents\Final Project GIT\VehicleApp\VehicleApp\obj\Debug\VehicleApp.DataLog.resources
+F:\Miles\Documents\Final Project GIT\VehicleApp\VehicleApp\obj\Debug\VehicleApp.WelcomeScreen.resources
+F:\Miles\Documents\Final Project GIT\VehicleApp\VehicleApp\bin\Debug\Tobii.EyeX.Client.dll
+F:\Miles\Documents\Final Project GIT\VehicleApp\VehicleApp\bin\Debug\EyeXFramework.dll
+F:\Miles\Documents\Final Project GIT\VehicleApp\VehicleApp\bin\Debug\Tobii.EyeX.Client.Net20.dll
+F:\Miles\Documents\Final Project GIT\VehicleApp\VehicleApp\bin\Debug\Tobii.Interaction.Model.dll
+F:\Miles\Documents\Final Project GIT\VehicleApp\VehicleApp\bin\Debug\Tobii.Interaction.Net.dll
