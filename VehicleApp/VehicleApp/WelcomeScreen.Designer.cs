@@ -84,6 +84,8 @@
             this.Controls.Add(this.btnAppStart);
             this.Controls.Add(this.btnConnect);
             this.Controls.Add(this.cmbComSelect);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "WelcomeScreen";
             this.Text = "WelcomeScreen";
             this.ResumeLayout(false);
