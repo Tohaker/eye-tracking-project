@@ -14,3 +14,4 @@ F:\Miles\Documents\Final Project GIT\VehicleApp\VehicleApp\bin\Debug\EyeXFramewo
 F:\Miles\Documents\Final Project GIT\VehicleApp\VehicleApp\bin\Debug\Tobii.EyeX.Client.Net20.dll
 F:\Miles\Documents\Final Project GIT\VehicleApp\VehicleApp\bin\Debug\Tobii.Interaction.Model.dll
 F:\Miles\Documents\Final Project GIT\VehicleApp\VehicleApp\bin\Debug\Tobii.Interaction.Net.dll
+F:\Miles\Documents\Final Project GIT\VehicleApp\VehicleApp\obj\Debug\VehicleApp.EyeControl.resources

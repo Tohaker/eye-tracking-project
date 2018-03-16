@@ -103,7 +103,7 @@ namespace VehicleApp
             bool success;
             sentMessage = msg;
 
-            connection.Open();
+            Open();
 
             if (!connection.Timeout)    // Check the internal flag to see if the connection was actually opened.
             {
