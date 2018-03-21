@@ -15,3 +15,5 @@ F:\Miles\Documents\Final Project GIT\VehicleApp\VehicleApp\bin\Debug\Tobii.EyeX.
 F:\Miles\Documents\Final Project GIT\VehicleApp\VehicleApp\bin\Debug\Tobii.Interaction.Model.dll
 F:\Miles\Documents\Final Project GIT\VehicleApp\VehicleApp\bin\Debug\Tobii.Interaction.Net.dll
 F:\Miles\Documents\Final Project GIT\VehicleApp\VehicleApp\obj\Debug\VehicleApp.EyeControl.resources
+F:\Miles\Documents\Final Project GIT\VehicleApp\VehicleApp\obj\Debug\VehicleApp.TobiiSettings.resources
+F:\Miles\Documents\Final Project GIT\VehicleApp\VehicleApp\obj\Debug\VehicleApp.csproj.CopyComplete

@@ -20,3 +20,4 @@ F:\Miles\Documents\Final Project GIT\WinForms_LED_App\GazeAwareLED\GazeAwareLED\
 F:\Miles\Documents\Final Project GIT\WinForms_LED_App\GazeAwareLED\GazeAwareLED\bin\Debug\NLog.xml
 F:\Miles\Documents\Final Project GIT\WinForms_LED_App\GazeAwareLED\GazeAwareLED\bin\Debug\RJCP.SerialPortStream.pdb
 F:\Miles\Documents\Final Project GIT\WinForms_LED_App\GazeAwareLED\GazeAwareLED\bin\Debug\RJCP.SerialPortStream.xml
+F:\Miles\Documents\Final Project GIT\WinForms_LED_App\GazeAwareLED\GazeAwareLED\obj\Debug\GazeAwareLED.csproj.CopyComplete

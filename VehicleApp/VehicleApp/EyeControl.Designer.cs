@@ -34,12 +34,13 @@
             this.applicationSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.connectionSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.developerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnForward = new System.Windows.Forms.Button();
-            this.btnReverse = new System.Windows.Forms.Button();
-            this.btnRight = new System.Windows.Forms.Button();
-            this.btnLeft = new System.Windows.Forms.Button();
-            this.btnBrake = new System.Windows.Forms.Button();
             this.behaviorMap1 = new EyeXFramework.Forms.BehaviorMap(this.components);
+            this.btnBrake = new System.Windows.Forms.Button();
+            this.btnLeft = new System.Windows.Forms.Button();
+            this.btnRight = new System.Windows.Forms.Button();
+            this.btnReverse = new System.Windows.Forms.Button();
+            this.btnForward = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -84,51 +85,93 @@
             this.developerToolStripMenuItem.Text = "Developer";
             this.developerToolStripMenuItem.Click += new System.EventHandler(this.developerToolStripMenuItem_Click);
             // 
-            // btnForward
+            // btnBrake
             // 
-            this.btnForward.Location = new System.Drawing.Point(288, 92);
-            this.btnForward.Name = "btnForward";
-            this.btnForward.Size = new System.Drawing.Size(80, 80);
-            this.btnForward.TabIndex = 1;
-            this.btnForward.UseVisualStyleBackColor = true;
-            // 
-            // btnReverse
-            // 
-            this.btnReverse.Location = new System.Drawing.Point(288, 353);
-            this.btnReverse.Name = "btnReverse";
-            this.btnReverse.Size = new System.Drawing.Size(80, 80);
-            this.btnReverse.TabIndex = 2;
-            this.btnReverse.UseVisualStyleBackColor = true;
-            // 
-            // btnRight
-            // 
-            this.btnRight.Location = new System.Drawing.Point(449, 217);
-            this.btnRight.Name = "btnRight";
-            this.btnRight.Size = new System.Drawing.Size(80, 80);
-            this.btnRight.TabIndex = 3;
-            this.btnRight.UseVisualStyleBackColor = true;
+            this.btnBrake.BackgroundImage = global::VehicleApp.Properties.Resources.Stop;
+            this.btnBrake.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBrake.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBrake.Location = new System.Drawing.Point(288, 217);
+            this.btnBrake.Name = "btnBrake";
+            this.btnBrake.Size = new System.Drawing.Size(119, 119);
+            this.btnBrake.TabIndex = 5;
+            this.btnBrake.UseVisualStyleBackColor = true;
+            this.btnBrake.Click += new System.EventHandler(this.btnBrake_Click);
+            this.btnBrake.MouseEnter += new System.EventHandler(this.btnBrake_MouseEnter);
+            this.btnBrake.MouseLeave += new System.EventHandler(this.btnBrake_MouseLeave);
             // 
             // btnLeft
             // 
+            this.btnLeft.BackgroundImage = global::VehicleApp.Properties.Resources.LeftArrow;
+            this.btnLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnLeft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLeft.Location = new System.Drawing.Point(131, 217);
             this.btnLeft.Name = "btnLeft";
-            this.btnLeft.Size = new System.Drawing.Size(80, 80);
+            this.btnLeft.Size = new System.Drawing.Size(119, 119);
             this.btnLeft.TabIndex = 4;
             this.btnLeft.UseVisualStyleBackColor = true;
+            this.btnLeft.Click += new System.EventHandler(this.btnLeft_Click);
+            this.btnLeft.MouseEnter += new System.EventHandler(this.btnLeft_MouseEnter);
+            this.btnLeft.MouseLeave += new System.EventHandler(this.btnLeft_MouseLeave);
             // 
-            // btnBrake
+            // btnRight
             // 
-            this.btnBrake.Location = new System.Drawing.Point(288, 217);
-            this.btnBrake.Name = "btnBrake";
-            this.btnBrake.Size = new System.Drawing.Size(80, 80);
-            this.btnBrake.TabIndex = 5;
-            this.btnBrake.UseVisualStyleBackColor = true;
+            this.btnRight.BackgroundImage = global::VehicleApp.Properties.Resources.RightArrow;
+            this.btnRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRight.Location = new System.Drawing.Point(449, 217);
+            this.btnRight.Name = "btnRight";
+            this.btnRight.Size = new System.Drawing.Size(119, 119);
+            this.btnRight.TabIndex = 3;
+            this.btnRight.UseVisualStyleBackColor = true;
+            this.btnRight.Click += new System.EventHandler(this.btnRight_Click);
+            this.btnRight.MouseEnter += new System.EventHandler(this.btnRight_MouseEnter);
+            this.btnRight.MouseLeave += new System.EventHandler(this.btnRight_MouseLeave);
+            // 
+            // btnReverse
+            // 
+            this.btnReverse.BackgroundImage = global::VehicleApp.Properties.Resources.BackArrow;
+            this.btnReverse.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnReverse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReverse.Location = new System.Drawing.Point(288, 353);
+            this.btnReverse.Name = "btnReverse";
+            this.btnReverse.Size = new System.Drawing.Size(119, 119);
+            this.btnReverse.TabIndex = 2;
+            this.btnReverse.UseVisualStyleBackColor = true;
+            this.btnReverse.Click += new System.EventHandler(this.btnReverse_Click);
+            this.btnReverse.MouseEnter += new System.EventHandler(this.btnReverse_MouseEnter);
+            this.btnReverse.MouseLeave += new System.EventHandler(this.btnReverse_MouseLeave);
+            // 
+            // btnForward
+            // 
+            this.btnForward.BackgroundImage = global::VehicleApp.Properties.Resources.Arrow;
+            this.btnForward.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnForward.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnForward.Location = new System.Drawing.Point(288, 76);
+            this.btnForward.Name = "btnForward";
+            this.btnForward.Size = new System.Drawing.Size(119, 119);
+            this.btnForward.TabIndex = 1;
+            this.btnForward.UseVisualStyleBackColor = true;
+            this.btnForward.Click += new System.EventHandler(this.btnForward_Click);
+            this.btnForward.MouseEnter += new System.EventHandler(this.btnForward_MouseEnter);
+            this.btnForward.MouseLeave += new System.EventHandler(this.btnForward_MouseLeave);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 498);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(409, 80);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Instructions:\r\nLook at the button you wish to \'click\'.\r\nHold you gaze on it until" +
+    " the border turns GREEN.\r\nObserve as the robot obeys your actions!";
             // 
             // EyeControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(686, 548);
+            this.ClientSize = new System.Drawing.Size(686, 587);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnBrake);
             this.Controls.Add(this.btnLeft);
             this.Controls.Add(this.btnRight);
@@ -160,5 +203,6 @@
         private System.Windows.Forms.Button btnLeft;
         private System.Windows.Forms.Button btnBrake;
         private EyeXFramework.Forms.BehaviorMap behaviorMap1;
+        private System.Windows.Forms.Label label1;
     }
 }

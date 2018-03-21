@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Forms;
-
 using EyeXFramework;
 
 namespace VehicleApp
@@ -19,6 +18,7 @@ namespace VehicleApp
         private System.Timers.Timer timer;
         private Button selectedButton;
         private int gazeTime = 1500;
+        private int brakeTime = 750;
 
         public EyeControl(string com_port)
         {
@@ -35,12 +35,22 @@ namespace VehicleApp
             behaviorMap1.Add(btnLeft, new GazeAwareBehavior(OnGaze));
             behaviorMap1.Add(btnRight, new GazeAwareBehavior(OnGaze));
             behaviorMap1.Add(btnBrake, new GazeAwareBehavior(OnGaze));
+
+            btnForward.FlatAppearance.BorderSize = 2;
+            btnReverse.FlatAppearance.BorderSize = 2;
+            btnRight.FlatAppearance.BorderSize = 2;
+            btnLeft.FlatAppearance.BorderSize = 2;
+            btnBrake.FlatAppearance.BorderSize = 2;
         }
 
         #region Timers
-        private void TimerSetup()
+        private void TimerSetup(Button btn)
         {
-            timer = new System.Timers.Timer(gazeTime);
+            if (btn.Equals(btnBrake))
+                timer = new System.Timers.Timer(brakeTime);
+            else
+                timer = new System.Timers.Timer(gazeTime);
+
             timer.AutoReset = false;
             timer.Elapsed += OnTimedEvent;
         }
@@ -52,23 +62,25 @@ namespace VehicleApp
         }
         #endregion
 
+        #region Eye Tracking
         private void OnGaze(object sender, GazeAwareEventArgs e)
         {
-            DisposeTimer(); // Remove any previous instances of the timer to keep resources free.
-            TimerSetup();   // Recalculate the timer as gazeTime could have changed.
             var button = sender as Button;
+
+            DisposeTimer(); // Remove any previous instances of the timer to keep resources free.
+            TimerSetup(button);   // Recalculate the timer as gazeTime could have changed.
 
             if (button != null)
             {
                 if (e.HasGaze)
                 {
-                    button.BackColor = Color.Green;
+                    button.FlatAppearance.BorderColor = Color.Red;
                     selectedButton = button;
                     timer.Enabled = true;
                 }
                 else
                 {
-                    button.BackColor = Color.Transparent;
+                    button.FlatAppearance.BorderColor = Color.Black;
                     timer.Enabled = false;
                 }
             }
@@ -97,8 +109,9 @@ namespace VehicleApp
                 controller.Brake();
             }
 
-            selectedButton.BackColor = Color.Transparent;
+            selectedButton.FlatAppearance.BorderColor = Color.Green;
         }
+        #endregion
 
         #region Menu Controls
         private void developerToolStripMenuItem_Click(object sender, EventArgs e)
@@ -117,8 +130,89 @@ namespace VehicleApp
         {
 
         }
+
         #endregion
 
+        #region Button Design
+        private void btnForward_MouseEnter(object sender, EventArgs e)
+        {
+            btnForward.FlatAppearance.BorderColor = Color.Red;
+        }
 
+        private void btnForward_MouseLeave(object sender, EventArgs e)
+        {
+            btnForward.FlatAppearance.BorderColor = Color.Black;
+        }
+
+        private void btnForward_Click(object sender, EventArgs e)
+        {
+            btnForward.FlatAppearance.BorderColor = Color.Green;
+            controller.Forward();
+        }
+
+        private void btnRight_MouseEnter(object sender, EventArgs e)
+        {
+            btnRight.FlatAppearance.BorderColor = Color.Red;
+        }
+
+        private void btnRight_MouseLeave(object sender, EventArgs e)
+        {
+            btnRight.FlatAppearance.BorderColor = Color.Black;
+        }
+
+        private void btnRight_Click(object sender, EventArgs e)
+        {
+            btnRight.FlatAppearance.BorderColor = Color.Green;
+            controller.Right();
+        }
+
+        private void btnReverse_MouseEnter(object sender, EventArgs e)
+        {
+            btnReverse.FlatAppearance.BorderColor = Color.Red;
+        }
+
+        private void btnReverse_MouseLeave(object sender, EventArgs e)
+        {
+            btnReverse.FlatAppearance.BorderColor = Color.Black;
+        }
+
+        private void btnReverse_Click(object sender, EventArgs e)
+        {
+            btnReverse.FlatAppearance.BorderColor = Color.Green;
+            controller.Reverse();
+        }
+
+        private void btnLeft_MouseEnter(object sender, EventArgs e)
+        {
+            btnLeft.FlatAppearance.BorderColor = Color.Red;
+        }
+
+        private void btnLeft_MouseLeave(object sender, EventArgs e)
+        {
+            btnLeft.FlatAppearance.BorderColor = Color.Black;
+        }
+
+        private void btnLeft_Click(object sender, EventArgs e)
+        {
+            btnLeft.FlatAppearance.BorderColor = Color.Green;
+            controller.Left();
+        }
+
+        private void btnBrake_MouseEnter(object sender, EventArgs e)
+        {
+            btnBrake.FlatAppearance.BorderColor = Color.Red;
+        }
+
+        private void btnBrake_MouseLeave(object sender, EventArgs e)
+        {
+            btnBrake.FlatAppearance.BorderColor = Color.Black;
+        }
+
+        private void btnBrake_Click(object sender, EventArgs e)
+        {
+            btnBrake.FlatAppearance.BorderColor = Color.Green;
+            controller.Brake();
+        }
+        #endregion
     }
 }
