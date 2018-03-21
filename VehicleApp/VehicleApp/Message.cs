@@ -41,20 +41,18 @@ namespace VehicleApp
         /// Shifts the command and data into an 8-bit, string formatted message ready for sending.
         /// </summary>
         /// <returns></returns>
-        public string PackageMessage (int command, int data = defaultData)
+        public string PackageMessage (int cmd, int d = defaultData)
         {
             string output = "";
             int msg;
 
-            if ((command >= 0) && (command <= 16))       // Simple check to make sure the command is between 0000 and 1111
+            if ((cmd >= 0) && (cmd <= 16))       // Simple check to make sure the command is between 0000 and 1111
             {
-                this.command = command;
-
-                if ((data >= 0) && (data <= 7))          // Similar check to make sure the data is 3 bits or fewer
-                    this.data = data;
-
-                msg = command | (data << 4) | (direction << 7);
-                output = Convert.ToString(msg);
+                if ((d >= 0) && (d <= 7))          // Similar check to make sure the data is 3 bits or fewer
+                {
+                    msg = cmd | (d << 4) | (direction << 7);
+                    output = Convert.ToString(msg);
+                }                    
             }
             else
             {
