@@ -17,3 +17,4 @@ F:\Miles\Documents\Final Project GIT\VehicleApp\VehicleApp\bin\Debug\Tobii.Inter
 F:\Miles\Documents\Final Project GIT\VehicleApp\VehicleApp\obj\Debug\VehicleApp.EyeControl.resources
 F:\Miles\Documents\Final Project GIT\VehicleApp\VehicleApp\obj\Debug\VehicleApp.TobiiSettings.resources
 F:\Miles\Documents\Final Project GIT\VehicleApp\VehicleApp\obj\Debug\VehicleApp.csproj.CopyComplete
+F:\Miles\Documents\Final Project GIT\VehicleApp\VehicleApp\obj\Debug\VehicleApp.ConnectionSettings.resources

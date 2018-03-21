@@ -28,8 +28,8 @@ namespace VehicleApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new WelcomeScreen());
-            //Application.Run(new EyeControl("COM3"));
+            //Application.Run(new WelcomeScreen());
+            Application.Run(new EyeControl("COM3"));
             eyeXHost.Dispose();
         }
     }

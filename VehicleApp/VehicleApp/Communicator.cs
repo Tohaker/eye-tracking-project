@@ -20,6 +20,11 @@ namespace VehicleApp
         /// Flag set if a timeout occured.
         /// </summary>
         public bool Timeout { get { return timeout; } }
+        
+        /// <summary>
+        /// Name of currently connected port.
+        /// </summary>
+        public string COM_Port { get { return serialPort.PortName; } }
         #endregion
 
         /// <summary>

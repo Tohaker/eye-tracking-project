@@ -123,7 +123,12 @@ namespace VehicleApp
 
         private void connectionSettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            ConnectionSettings connectionSettings = new ConnectionSettings(controller.COM_Port);
+            controller.Close();
+            if (connectionSettings.ShowDialog(this) == DialogResult.OK)
+            {
+                controller.ChangeConnection(connectionSettings.Com_Port);
+            }
         }
 
         private void applicationSettingsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -135,7 +140,6 @@ namespace VehicleApp
             }
 
         }
-
         #endregion
 
         #region Button Design

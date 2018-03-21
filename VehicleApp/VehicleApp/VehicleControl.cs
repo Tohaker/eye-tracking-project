@@ -46,6 +46,8 @@ namespace VehicleApp
                 return Convert.ToString(recValue, 2).PadLeft(8, '0');   // Converts the string to an 8 bit binary representation.
             }
         }
+
+        public string COM_Port { get { return connection.COM_Port; } }
         #endregion
 
         public VehicleControl(string COM)
@@ -147,6 +149,19 @@ namespace VehicleApp
         public void Close()
         {
             connection.Close();
+        }
+
+        /// <summary>
+        /// Changes the port that the application is using for connections.
+        /// </summary>
+        /// <param name="COM">String representation of port to connect to.</param>
+        public void ChangeConnection(string COM)
+        {
+            if (connection.IsOpen())
+                Close();
+
+            connection = new Communicator(COM);
+            Open();
         }
 
         public bool Forward()

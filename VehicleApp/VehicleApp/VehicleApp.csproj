@@ -59,6 +59,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Communicator.cs" />
+    <Compile Include="ConnectionSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConnectionSettings.Designer.cs">
+      <DependentUpon>ConnectionSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataLog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +93,9 @@
     <Compile Include="WelcomeScreen.Designer.cs">
       <DependentUpon>WelcomeScreen.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ConnectionSettings.resx">
+      <DependentUpon>ConnectionSettings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DataLog.resx">
       <DependentUpon>DataLog.cs</DependentUpon>
     </EmbeddedResource>
