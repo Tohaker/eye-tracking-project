@@ -79,7 +79,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(225, 178);
+            this.ClientSize = new System.Drawing.Size(225, 116);
             this.Controls.Add(this.chkTobiiUserPresent);
             this.Controls.Add(this.btnAppStart);
             this.Controls.Add(this.btnConnect);
@@ -87,7 +87,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "WelcomeScreen";
-            this.Text = "WelcomeScreen";
+            this.Text = "Welcome";
             this.ResumeLayout(false);
             this.PerformLayout();
 

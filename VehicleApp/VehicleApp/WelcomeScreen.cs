@@ -25,8 +25,8 @@ namespace VehicleApp
             InitializeComponent();
             btnAppStart.Enabled = false;
 
-            // Create the EyeX host.
-            _eyeXHost = new FormsEyeXHost();
+            // Get the EyeX host.
+            _eyeXHost = Program.EyeXHost;
         }
 
         #region Eye Tracking
@@ -91,29 +91,32 @@ namespace VehicleApp
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
-            string selectedPort = cmbComSelect.SelectedItem.ToString();
-
-            if (controller == null)     // Check if the controller object exists already
+            if (cmbComSelect.Items.Count > 0)
             {
-                controller = new VehicleControl(selectedPort);
-            }
+                string selectedPort = cmbComSelect.SelectedItem.ToString();
 
-            if (btnConnect.Text == "Connect")
-            {
-                controller.Open();
-                if (controller.Ping())      // Test the connection by Pinging the device.
+                if (controller == null)     // Check if the controller object exists already
                 {
-                    btnConnect.Text = "Disconnect";
+                    controller = new VehicleControl(selectedPort);
+                }
 
-                    if (chkTobiiUserPresent.Checked)
+                if (btnConnect.Text == "Connect")
+                {
+                    controller.Open();
+                    if (controller.Ping())      // Test the connection by Pinging the device.
+                    {
+                        btnConnect.Text = "Disconnect";
+
+                        //if (chkTobiiUserPresent.Checked)  // [Optional] Check if the user is in front of the screen
                         btnAppStart.Enabled = true;
-                }   
-            }
-            else if (btnConnect.Text == "Disconnect")
-            {
-                controller.Close();
-                btnConnect.Text = "Connect";
-                btnAppStart.Enabled = false;
+                    }
+                }
+                else if (btnConnect.Text == "Disconnect")
+                {
+                    controller.Close();
+                    btnConnect.Text = "Connect";
+                    btnAppStart.Enabled = false;
+                }
             }
         }
 
@@ -121,6 +124,7 @@ namespace VehicleApp
         {
             this.Hide();
             string selectedPort = cmbComSelect.SelectedItem.ToString();
+            controller.Close();
             EyeControl eyeControl = new EyeControl(selectedPort);
             eyeControl.Closed += (s, args) => this.Close();
             eyeControl.Show();
