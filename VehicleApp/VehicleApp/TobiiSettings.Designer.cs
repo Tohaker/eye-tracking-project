@@ -28,25 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.chkUserPresent = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.sliderGazeTime = new System.Windows.Forms.TrackBar();
             this.numGazeTime = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnSave = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.sliderGazeTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numGazeTime)).BeginInit();
             this.SuspendLayout();
             // 
-            // checkBox1
+            // chkUserPresent
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.checkBox1.Location = new System.Drawing.Point(12, 12);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(93, 17);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "User Present?";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.chkUserPresent.AutoSize = true;
+            this.chkUserPresent.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkUserPresent.Location = new System.Drawing.Point(12, 12);
+            this.chkUserPresent.Name = "chkUserPresent";
+            this.chkUserPresent.Size = new System.Drawing.Size(93, 17);
+            this.chkUserPresent.TabIndex = 0;
+            this.chkUserPresent.Text = "User Present?";
+            this.chkUserPresent.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -66,6 +67,7 @@
             this.sliderGazeTime.Size = new System.Drawing.Size(187, 45);
             this.sliderGazeTime.TabIndex = 2;
             this.sliderGazeTime.Value = 1500;
+            this.sliderGazeTime.ValueChanged += new System.EventHandler(this.sliderGazeTime_ValueChanged);
             // 
             // numGazeTime
             // 
@@ -78,6 +80,7 @@
             this.numGazeTime.Name = "numGazeTime";
             this.numGazeTime.Size = new System.Drawing.Size(78, 20);
             this.numGazeTime.TabIndex = 3;
+            this.numGazeTime.ValueChanged += new System.EventHandler(this.numGazeTime_ValueChanged);
             // 
             // label2
             // 
@@ -88,16 +91,27 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Gaze Time: Length of time to stare at a\r\nbutton before it clicks.";
             // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(127, 273);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 5;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
             // TobiiSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(214, 308);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.numGazeTime);
             this.Controls.Add(this.sliderGazeTime);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.chkUserPresent);
             this.Name = "TobiiSettings";
             this.Text = "Tobii Settings";
             ((System.ComponentModel.ISupportInitialize)(this.sliderGazeTime)).EndInit();
@@ -109,10 +123,11 @@
 
         #endregion
 
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox chkUserPresent;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TrackBar sliderGazeTime;
         private System.Windows.Forms.NumericUpDown numGazeTime;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnSave;
     }
 }

@@ -128,6 +128,11 @@ namespace VehicleApp
 
         private void applicationSettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            TobiiSettings settingsScreen = new TobiiSettings(gazeTime);
+            if (settingsScreen.ShowDialog(this) == DialogResult.OK)
+            {
+                gazeTime = settingsScreen.GazeTime;
+            }
 
         }
 
