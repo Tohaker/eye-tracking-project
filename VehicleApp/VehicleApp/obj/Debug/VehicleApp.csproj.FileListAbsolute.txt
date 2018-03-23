@@ -18,3 +18,7 @@ F:\Miles\Documents\Final Project GIT\VehicleApp\VehicleApp\obj\Debug\VehicleApp.
 F:\Miles\Documents\Final Project GIT\VehicleApp\VehicleApp\obj\Debug\VehicleApp.TobiiSettings.resources
 F:\Miles\Documents\Final Project GIT\VehicleApp\VehicleApp\obj\Debug\VehicleApp.csproj.CopyComplete
 F:\Miles\Documents\Final Project GIT\VehicleApp\VehicleApp\obj\Debug\VehicleApp.ConnectionSettings.resources
+F:\Miles\Documents\Final Project GIT\VehicleApp\VehicleApp\bin\Debug\VehicleApp.exe.manifest
+F:\Miles\Documents\Final Project GIT\VehicleApp\VehicleApp\bin\Debug\VehicleApp.application
+F:\Miles\Documents\Final Project GIT\VehicleApp\VehicleApp\obj\Debug\VehicleApp.exe.manifest
+F:\Miles\Documents\Final Project GIT\VehicleApp\VehicleApp\obj\Debug\VehicleApp.application

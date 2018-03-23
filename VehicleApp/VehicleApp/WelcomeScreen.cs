@@ -8,7 +8,6 @@ using System.IO.Ports;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 using EyeXFramework;
 using EyeXFramework.Forms;
 using Tobii.EyeX.Framework;
