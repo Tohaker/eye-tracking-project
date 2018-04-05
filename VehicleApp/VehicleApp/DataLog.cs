@@ -16,11 +16,14 @@ namespace VehicleApp
         #region Private Members
         private VehicleControl controller;
         #endregion
-        public DataLog()
+
+        public DataLog(string com)
         {
             InitializeComponent();
-
-            EnableButtons(false);
+            if ((controller == null) && (com != ""))     // Check if the controller object exists already
+                controller = new VehicleControl(com);
+            label1.Text = "Connected to" + com;
+            EnableButtons(true);
         }
 
         private void cmbComSelect_DropDown(object sender, EventArgs e)
@@ -35,16 +38,13 @@ namespace VehicleApp
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
-            string selectedPort = cmbComSelect.SelectedItem.ToString();
 
-            if (controller == null)     // Check if the controller object exists already
-            {
-                controller = new VehicleControl(selectedPort);
-            }
+            string selectedPort = cmbComSelect.SelectedItem.ToString();
 
             if (btnConnect.Text == "Connect")
             {
-                controller.Open();
+                controller.ChangeConnection(selectedPort);
+                label1.Text = "Connected to" + selectedPort;
                 btnConnect.Text = "Disconnect";
 
                 EnableButtons(true);
@@ -53,6 +53,7 @@ namespace VehicleApp
             {
                 controller.Close();
                 btnConnect.Text = "Connect";
+                label1.Text = "Disconnected";
 
                 EnableButtons(false);
             }
