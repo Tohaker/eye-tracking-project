@@ -80,6 +80,7 @@ namespace VehicleApp
             EyeControl eyeControl = this.Owner as EyeControl;
             if (eyeControl != null)
             {
+                vehicleControl.Close();
                 this.DialogResult = DialogResult.OK;
                 Close();
             }
