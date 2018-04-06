@@ -182,9 +182,14 @@ namespace VehicleApp
         #region Menu Controls
         private void developerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //TODO: Add password protect
-            DataLog devScreen = new DataLog(controller.COM_Port);
-            devScreen.Show();
+            PasswordDialog password = new PasswordDialog();
+            if (password.ShowDialog() == DialogResult.OK)
+            {
+                DataLog devScreen = new DataLog(controller.COM_Port);
+                controller.Close();
+                devScreen.ShowDialog();
+                controller.Open();
+            }
         }
 
         private void connectionSettingsToolStripMenuItem_Click(object sender, EventArgs e)

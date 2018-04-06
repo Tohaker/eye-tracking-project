@@ -156,7 +156,7 @@
             this.btnForward.Location = new System.Drawing.Point(288, 76);
             this.btnForward.Name = "btnForward";
             this.btnForward.Size = new System.Drawing.Size(119, 119);
-            this.btnForward.TabIndex = 1;
+            this.btnForward.TabIndex = 2;
             this.btnForward.UseVisualStyleBackColor = true;
             this.btnForward.Click += new System.EventHandler(this.btnForward_Click);
             this.btnForward.MouseEnter += new System.EventHandler(this.btnForward_MouseEnter);
@@ -188,7 +188,7 @@
             this.btnExitDemo.Location = new System.Drawing.Point(16, 54);
             this.btnExitDemo.Name = "btnExitDemo";
             this.btnExitDemo.Size = new System.Drawing.Size(130, 61);
-            this.btnExitDemo.TabIndex = 8;
+            this.btnExitDemo.TabIndex = 1;
             this.btnExitDemo.Text = "Exit Demo Mode";
             this.btnExitDemo.UseVisualStyleBackColor = true;
             this.btnExitDemo.Click += new System.EventHandler(this.btnExitDemo_Click);
