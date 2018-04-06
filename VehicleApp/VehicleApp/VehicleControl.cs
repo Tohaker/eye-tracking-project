@@ -33,8 +33,13 @@ namespace VehicleApp
         {
             get
             {
-                int sentValue = Convert.ToInt32(sentMessage);
-                return Convert.ToString(sentValue, 2).PadLeft(8, '0');  // Converts the string to an 8 bit binary representation.
+                if (sentMessage != "")
+                {
+                    int sentValue = Convert.ToInt32(sentMessage);
+                    return Convert.ToString(sentValue, 2).PadLeft(8, '0');  // Converts the string to an 8 bit binary representation.
+                }
+                else
+                    return sentMessage;
             }
         }
 
@@ -42,8 +47,13 @@ namespace VehicleApp
         {
             get
             {
-                int recValue = Convert.ToInt32(receivedMessage);
-                return Convert.ToString(recValue, 2).PadLeft(8, '0');   // Converts the string to an 8 bit binary representation.
+                if (receivedMessage != "")
+                {
+                    int recValue = Convert.ToInt32(receivedMessage);
+                    return Convert.ToString(recValue, 2).PadLeft(8, '0');   // Converts the string to an 8 bit binary representation.
+                }
+                else
+                    return receivedMessage;
             }
         }
 
@@ -139,7 +149,11 @@ namespace VehicleApp
         /// Opens the Communication channel.
         /// </summary>
         public void Open() => connection.Open();
-
+        
+        /// <summary>
+        /// Checks if the communication channel is open.
+        /// </summary>
+        /// <returns>True or False</returns>
         public bool IsOpen() => connection.IsOpen();
 
         /// <summary>
@@ -153,7 +167,7 @@ namespace VehicleApp
         /// <param name="COM">String representation of port to connect to.</param>
         public void ChangeConnection(string COM)
         {
-            if (connection.IsOpen())
+            if (IsOpen())
                 Close();
 
             connection = new Communicator(COM);
