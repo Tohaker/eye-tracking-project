@@ -32,6 +32,7 @@
             this.btnConnect = new System.Windows.Forms.Button();
             this.btnAppStart = new System.Windows.Forms.Button();
             this.chkTobiiUserPresent = new System.Windows.Forms.CheckBox();
+            this.btnDemoMode = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cmbComSelect
@@ -75,11 +76,22 @@
             this.chkTobiiUserPresent.Text = "User Detected";
             this.chkTobiiUserPresent.UseVisualStyleBackColor = true;
             // 
+            // btnDemoMode
+            // 
+            this.btnDemoMode.Location = new System.Drawing.Point(132, 71);
+            this.btnDemoMode.Name = "btnDemoMode";
+            this.btnDemoMode.Size = new System.Drawing.Size(81, 23);
+            this.btnDemoMode.TabIndex = 4;
+            this.btnDemoMode.Text = "Demo Mode";
+            this.btnDemoMode.UseVisualStyleBackColor = true;
+            this.btnDemoMode.Click += new System.EventHandler(this.btnDemoMode_Click);
+            // 
             // WelcomeScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(225, 116);
+            this.Controls.Add(this.btnDemoMode);
             this.Controls.Add(this.chkTobiiUserPresent);
             this.Controls.Add(this.btnAppStart);
             this.Controls.Add(this.btnConnect);
@@ -99,5 +111,6 @@
         private System.Windows.Forms.Button btnConnect;
         private System.Windows.Forms.Button btnAppStart;
         private System.Windows.Forms.CheckBox chkTobiiUserPresent;
+        private System.Windows.Forms.Button btnDemoMode;
     }
 }

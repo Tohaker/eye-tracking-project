@@ -41,6 +41,8 @@
             this.btnReverse = new System.Windows.Forms.Button();
             this.btnForward = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.lblDemoMode = new System.Windows.Forms.Label();
+            this.btnExitDemo = new System.Windows.Forms.Button();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,6 +91,7 @@
             // 
             this.btnBrake.BackgroundImage = global::VehicleApp.Properties.Resources.Stop;
             this.btnBrake.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBrake.FlatAppearance.BorderSize = 2;
             this.btnBrake.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBrake.Location = new System.Drawing.Point(288, 217);
             this.btnBrake.Name = "btnBrake";
@@ -103,6 +106,7 @@
             // 
             this.btnLeft.BackgroundImage = global::VehicleApp.Properties.Resources.LeftArrow;
             this.btnLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnLeft.FlatAppearance.BorderSize = 2;
             this.btnLeft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLeft.Location = new System.Drawing.Point(131, 217);
             this.btnLeft.Name = "btnLeft";
@@ -117,6 +121,7 @@
             // 
             this.btnRight.BackgroundImage = global::VehicleApp.Properties.Resources.RightArrow;
             this.btnRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnRight.FlatAppearance.BorderSize = 2;
             this.btnRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRight.Location = new System.Drawing.Point(449, 217);
             this.btnRight.Name = "btnRight";
@@ -131,6 +136,7 @@
             // 
             this.btnReverse.BackgroundImage = global::VehicleApp.Properties.Resources.BackArrow;
             this.btnReverse.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnReverse.FlatAppearance.BorderSize = 2;
             this.btnReverse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReverse.Location = new System.Drawing.Point(288, 353);
             this.btnReverse.Name = "btnReverse";
@@ -145,6 +151,7 @@
             // 
             this.btnForward.BackgroundImage = global::VehicleApp.Properties.Resources.Arrow;
             this.btnForward.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnForward.FlatAppearance.BorderSize = 2;
             this.btnForward.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnForward.Location = new System.Drawing.Point(288, 76);
             this.btnForward.Name = "btnForward";
@@ -166,11 +173,33 @@
             this.label1.Text = "Instructions:\r\nLook at the button you wish to \'click\'.\r\nHold you gaze on it until" +
     " the border turns GREEN.\r\nObserve as the robot obeys your actions!";
             // 
+            // lblDemoMode
+            // 
+            this.lblDemoMode.AutoSize = true;
+            this.lblDemoMode.Location = new System.Drawing.Point(13, 28);
+            this.lblDemoMode.Name = "lblDemoMode";
+            this.lblDemoMode.Size = new System.Drawing.Size(35, 13);
+            this.lblDemoMode.TabIndex = 7;
+            this.lblDemoMode.Text = "label2";
+            // 
+            // btnExitDemo
+            // 
+            this.btnExitDemo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExitDemo.Location = new System.Drawing.Point(16, 54);
+            this.btnExitDemo.Name = "btnExitDemo";
+            this.btnExitDemo.Size = new System.Drawing.Size(130, 61);
+            this.btnExitDemo.TabIndex = 8;
+            this.btnExitDemo.Text = "Exit Demo Mode";
+            this.btnExitDemo.UseVisualStyleBackColor = true;
+            this.btnExitDemo.Click += new System.EventHandler(this.btnExitDemo_Click);
+            // 
             // EyeControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(686, 587);
+            this.Controls.Add(this.btnExitDemo);
+            this.Controls.Add(this.lblDemoMode);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnBrake);
             this.Controls.Add(this.btnLeft);
@@ -204,5 +233,7 @@
         private System.Windows.Forms.Button btnBrake;
         private EyeXFramework.Forms.BehaviorMap behaviorMap1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblDemoMode;
+        private System.Windows.Forms.Button btnExitDemo;
     }
 }

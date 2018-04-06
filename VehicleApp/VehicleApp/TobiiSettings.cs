@@ -16,9 +16,9 @@ namespace VehicleApp
     public partial class TobiiSettings : Form
     {
         private readonly FormsEyeXHost _eyeXHost;
-        private int gazeTime;
+        private int dwellTime;
 
-        public int GazeTime { get { return gazeTime; } }
+        public int DwellTime { get { return dwellTime; } }
 
         public TobiiSettings(int gt)
         {
@@ -27,10 +27,10 @@ namespace VehicleApp
             // Get the EyeX host.
             _eyeXHost = Program.EyeXHost;
 
-            gazeTime = gt;
+            dwellTime = gt;
 
-            numGazeTime.Value = gazeTime;
-            sliderGazeTime.Value = gazeTime;
+            numDwellTime.Value = dwellTime;
+            sliderDwellTime.Value = dwellTime;
         }
 
         #region Eye Tracking
@@ -85,16 +85,16 @@ namespace VehicleApp
         #endregion
 
         #region Gaze Time
-        private void numGazeTime_ValueChanged(object sender, EventArgs e)
+        private void numDwellTime_ValueChanged(object sender, EventArgs e)
         {
-            sliderGazeTime.Value = (int)numGazeTime.Value;
-            gazeTime = (int)numGazeTime.Value;
+            sliderDwellTime.Value = (int)numDwellTime.Value;
+            dwellTime = (int)numDwellTime.Value;
         }
 
-        private void sliderGazeTime_ValueChanged(object sender, EventArgs e)
+        private void sliderDwellTime_ValueChanged(object sender, EventArgs e)
         {
-            numGazeTime.Value = sliderGazeTime.Value;
-            gazeTime = sliderGazeTime.Value;
+            numDwellTime.Value = sliderDwellTime.Value;
+            dwellTime = sliderDwellTime.Value;
         }
         #endregion
 

@@ -90,14 +90,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="VehicleApp.exe" size="55208">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="VehicleApp.exe" size="57768">
       <assemblyIdentity name="VehicleApp" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>lb5fEILAn4IAGu8ZPFx30pGis0rac6jbmNDfIlxAeEQ=</dsig:DigestValue>
+        <dsig:DigestValue>WZNtDbI7uvakWLoxJ9FyqovYvdXtvGGs1hQtj9a4Qb4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

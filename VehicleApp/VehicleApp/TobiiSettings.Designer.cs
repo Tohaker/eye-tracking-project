@@ -30,12 +30,14 @@
         {
             this.chkUserPresent = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.sliderGazeTime = new System.Windows.Forms.TrackBar();
-            this.numGazeTime = new System.Windows.Forms.NumericUpDown();
+            this.sliderDwellTime = new System.Windows.Forms.TrackBar();
+            this.numDwellTime = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderGazeTime)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numGazeTime)).BeginInit();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderDwellTime)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numDwellTime)).BeginInit();
             this.SuspendLayout();
             // 
             // chkUserPresent
@@ -54,42 +56,42 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 46);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 13);
+            this.label1.Size = new System.Drawing.Size(102, 13);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Change Gaze Time:";
+            this.label1.Text = "Change Dwell Time:";
             // 
-            // sliderGazeTime
+            // sliderDwellTime
             // 
-            this.sliderGazeTime.LargeChange = 100;
-            this.sliderGazeTime.Location = new System.Drawing.Point(15, 72);
-            this.sliderGazeTime.Maximum = 3000;
-            this.sliderGazeTime.Name = "sliderGazeTime";
-            this.sliderGazeTime.Size = new System.Drawing.Size(187, 45);
-            this.sliderGazeTime.TabIndex = 2;
-            this.sliderGazeTime.Value = 1500;
-            this.sliderGazeTime.ValueChanged += new System.EventHandler(this.sliderGazeTime_ValueChanged);
+            this.sliderDwellTime.LargeChange = 100;
+            this.sliderDwellTime.Location = new System.Drawing.Point(15, 72);
+            this.sliderDwellTime.Maximum = 3000;
+            this.sliderDwellTime.Name = "sliderDwellTime";
+            this.sliderDwellTime.Size = new System.Drawing.Size(187, 45);
+            this.sliderDwellTime.TabIndex = 2;
+            this.sliderDwellTime.Value = 1500;
+            this.sliderDwellTime.ValueChanged += new System.EventHandler(this.sliderDwellTime_ValueChanged);
             // 
-            // numGazeTime
+            // numDwellTime
             // 
-            this.numGazeTime.Location = new System.Drawing.Point(119, 44);
-            this.numGazeTime.Maximum = new decimal(new int[] {
+            this.numDwellTime.Location = new System.Drawing.Point(119, 44);
+            this.numDwellTime.Maximum = new decimal(new int[] {
             3000,
             0,
             0,
             0});
-            this.numGazeTime.Name = "numGazeTime";
-            this.numGazeTime.Size = new System.Drawing.Size(78, 20);
-            this.numGazeTime.TabIndex = 3;
-            this.numGazeTime.ValueChanged += new System.EventHandler(this.numGazeTime_ValueChanged);
+            this.numDwellTime.Name = "numDwellTime";
+            this.numDwellTime.Size = new System.Drawing.Size(78, 20);
+            this.numDwellTime.TabIndex = 3;
+            this.numDwellTime.ValueChanged += new System.EventHandler(this.numDwellTime_ValueChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 120);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(190, 26);
+            this.label2.Size = new System.Drawing.Size(188, 26);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Gaze Time: Length of time to stare at a\r\nbutton before it clicks.";
+            this.label2.Text = "Dwell Time: Length of time to look at a\r\nbutton before it clicks.";
             // 
             // btnSave
             // 
@@ -101,21 +103,43 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(15, 167);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(98, 17);
+            this.checkBox1.TabIndex = 6;
+            this.checkBox1.Text = "Gaze Selection";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(15, 191);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(107, 17);
+            this.checkBox2.TabIndex = 7;
+            this.checkBox2.Text = "Mouse Emulation";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
             // TobiiSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(214, 308);
+            this.Controls.Add(this.checkBox2);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.numGazeTime);
-            this.Controls.Add(this.sliderGazeTime);
+            this.Controls.Add(this.numDwellTime);
+            this.Controls.Add(this.sliderDwellTime);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.chkUserPresent);
             this.Name = "TobiiSettings";
             this.Text = "Tobii Settings";
-            ((System.ComponentModel.ISupportInitialize)(this.sliderGazeTime)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numGazeTime)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliderDwellTime)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numDwellTime)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -125,9 +149,11 @@
 
         private System.Windows.Forms.CheckBox chkUserPresent;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TrackBar sliderGazeTime;
-        private System.Windows.Forms.NumericUpDown numGazeTime;
+        private System.Windows.Forms.TrackBar sliderDwellTime;
+        private System.Windows.Forms.NumericUpDown numDwellTime;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBox2;
     }
 }

@@ -36,7 +36,8 @@ namespace VehicleApp
             _eyeXHost.UserPresenceChanged += EyeXHost_UserPresenceChanged;
 
             // Start the EyeX host.
-            _eyeXHost.Start();
+            if (!_eyeXHost.IsStarted)
+                _eyeXHost.Start();
 
             // Wait until we're connected.
             if (_eyeXHost.WaitUntilConnected(TimeSpan.FromSeconds(5)))
@@ -125,6 +126,14 @@ namespace VehicleApp
             string selectedPort = cmbComSelect.SelectedItem.ToString();
             controller.Close();
             EyeControl eyeControl = new EyeControl(selectedPort);
+            eyeControl.Closed += (s, args) => this.Close();
+            eyeControl.Show();
+        }
+
+        private void btnDemoMode_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            EyeControl eyeControl = new EyeControl();
             eyeControl.Closed += (s, args) => this.Close();
             eyeControl.Show();
         }

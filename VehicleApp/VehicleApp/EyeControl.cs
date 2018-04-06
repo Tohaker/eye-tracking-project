@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -15,17 +16,33 @@ namespace VehicleApp
     public partial class EyeControl : Form
     {
         private VehicleControl controller;
-        private System.Timers.Timer timer;
         private Button selectedButton;
-        private int gazeTime = 1500;
-        private int brakeTime = 750;
 
+        private System.Timers.Timer timer;
+        private Stopwatch stopwatch;
+        private int dwellTime = 1500;
+        private int brakeTime;
+        private int elapsedTime;
+
+        private bool demoMode;
+
+        /// <summary>
+        /// Full featured mode constructor
+        /// </summary>
+        /// <param name="com_port"></param>
         public EyeControl(string com_port)
         {
             InitializeComponent();
 
+            brakeTime = dwellTime / 2;
+
             controller = new VehicleControl(com_port);
             controller.Open();
+
+            demoMode = false;
+            lblDemoMode.Text = "";
+            btnExitDemo.Enabled = false;
+            btnExitDemo.Hide();
 
             // Add eye-gaze interaction behaviors to the buttons on the form.
             // The buttons should change colour when the user's gaze are on them.
@@ -35,12 +52,28 @@ namespace VehicleApp
             behaviorMap1.Add(btnLeft, new GazeAwareBehavior(OnGaze));
             behaviorMap1.Add(btnRight, new GazeAwareBehavior(OnGaze));
             behaviorMap1.Add(btnBrake, new GazeAwareBehavior(OnGaze));
+        }
 
-            btnForward.FlatAppearance.BorderSize = 2;
-            btnReverse.FlatAppearance.BorderSize = 2;
-            btnRight.FlatAppearance.BorderSize = 2;
-            btnLeft.FlatAppearance.BorderSize = 2;
-            btnBrake.FlatAppearance.BorderSize = 2;
+        /// <summary>
+        /// Demo Mode Constructor
+        /// </summary>
+        public EyeControl()
+        {
+            InitializeComponent();
+
+            demoMode = true;
+            lblDemoMode.Text = "Demo Mode Active - Communications will be limited.";
+            btnExitDemo.Enabled = true;
+            btnExitDemo.Show();
+
+            // Add eye-gaze interaction behaviors to the buttons on the form.
+            // The buttons should change colour when the user's gaze are on them.
+            Program.EyeXHost.Connect(behaviorMap1);
+            behaviorMap1.Add(btnForward, new GazeAwareBehavior(OnGaze));
+            behaviorMap1.Add(btnReverse, new GazeAwareBehavior(OnGaze));
+            behaviorMap1.Add(btnLeft, new GazeAwareBehavior(OnGaze));
+            behaviorMap1.Add(btnRight, new GazeAwareBehavior(OnGaze));
+            behaviorMap1.Add(btnBrake, new GazeAwareBehavior(OnGaze));
         }
 
         #region Timers
@@ -49,10 +82,40 @@ namespace VehicleApp
             if (btn.Equals(btnBrake))
                 timer = new System.Timers.Timer(brakeTime);
             else
-                timer = new System.Timers.Timer(gazeTime);
+                timer = new System.Timers.Timer(dwellTime);
 
+            stopwatch = new Stopwatch();
             timer.AutoReset = false;
             timer.Elapsed += OnTimedEvent;
+        }
+
+        private void StartTimer()
+        {
+            timer.Enabled = true;
+            stopwatch.Start();
+        }
+
+        private void PauseTimer()
+        {
+            DisposeTimer();
+            elapsedTime = (int)stopwatch.ElapsedMilliseconds;
+            stopwatch.Stop();
+        }
+
+        private void ResumeTimer()
+        {
+            timer = new System.Timers.Timer(dwellTime - elapsedTime)
+            {
+                AutoReset = false
+            };
+            timer.Elapsed += OnTimedEvent;
+        }
+
+        private void StopTimer()
+        {
+            DisposeTimer();
+            stopwatch.Stop();
+            stopwatch.Reset();
         }
 
         private void DisposeTimer()
@@ -68,7 +131,7 @@ namespace VehicleApp
             var button = sender as Button;
 
             DisposeTimer(); // Remove any previous instances of the timer to keep resources free.
-            TimerSetup(button);   // Recalculate the timer as gazeTime could have changed.
+            TimerSetup(button);   // Recalculate the timer as dwellTime could have changed.
 
             if (button != null)
             {
@@ -88,25 +151,28 @@ namespace VehicleApp
 
         private void OnTimedEvent(object source, ElapsedEventArgs e)
         {
-            if (selectedButton.Equals(btnForward))
+            if (!demoMode)
             {
-                controller.Forward();
-            }
-            else if (selectedButton.Equals(btnReverse))
-            {
-                controller.Reverse();
-            }
-            else if (selectedButton.Equals(btnLeft))
-            {
-                controller.Left();
-            }
-            else if (selectedButton.Equals(btnRight))
-            {
-                controller.Right();
-            }
-            else if (selectedButton.Equals(btnBrake))
-            {
-                controller.Brake();
+                if (selectedButton.Equals(btnForward))
+                {
+                    controller.Forward();
+                }
+                else if (selectedButton.Equals(btnReverse))
+                {
+                    controller.Reverse();
+                }
+                else if (selectedButton.Equals(btnLeft))
+                {
+                    controller.Left();
+                }
+                else if (selectedButton.Equals(btnRight))
+                {
+                    controller.Right();
+                }
+                else if (selectedButton.Equals(btnBrake))
+                {
+                    controller.Brake();
+                }
             }
 
             selectedButton.FlatAppearance.BorderColor = Color.Green;
@@ -133,10 +199,10 @@ namespace VehicleApp
 
         private void applicationSettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            TobiiSettings settingsScreen = new TobiiSettings(gazeTime);
+            TobiiSettings settingsScreen = new TobiiSettings(dwellTime);
             if (settingsScreen.ShowDialog(this) == DialogResult.OK)
             {
-                gazeTime = settingsScreen.GazeTime;
+                dwellTime = settingsScreen.DwellTime;
             }
 
         }
@@ -156,7 +222,8 @@ namespace VehicleApp
         private void btnForward_Click(object sender, EventArgs e)
         {
             btnForward.FlatAppearance.BorderColor = Color.Green;
-            controller.Forward();
+            if (!demoMode)
+                controller.Forward();
         }
 
         private void btnRight_MouseEnter(object sender, EventArgs e)
@@ -172,7 +239,8 @@ namespace VehicleApp
         private void btnRight_Click(object sender, EventArgs e)
         {
             btnRight.FlatAppearance.BorderColor = Color.Green;
-            controller.Right();
+            if (!demoMode)
+                controller.Right();
         }
 
         private void btnReverse_MouseEnter(object sender, EventArgs e)
@@ -188,7 +256,8 @@ namespace VehicleApp
         private void btnReverse_Click(object sender, EventArgs e)
         {
             btnReverse.FlatAppearance.BorderColor = Color.Green;
-            controller.Reverse();
+            if(!demoMode)
+                controller.Reverse();
         }
 
         private void btnLeft_MouseEnter(object sender, EventArgs e)
@@ -204,7 +273,8 @@ namespace VehicleApp
         private void btnLeft_Click(object sender, EventArgs e)
         {
             btnLeft.FlatAppearance.BorderColor = Color.Green;
-            controller.Left();
+            if (!demoMode)
+                controller.Left();
         }
 
         private void btnBrake_MouseEnter(object sender, EventArgs e)
@@ -220,8 +290,17 @@ namespace VehicleApp
         private void btnBrake_Click(object sender, EventArgs e)
         {
             btnBrake.FlatAppearance.BorderColor = Color.Green;
-            controller.Brake();
+            if(!demoMode)
+                controller.Brake();
         }
         #endregion
+
+        private void btnExitDemo_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            WelcomeScreen welcomeScreen = new WelcomeScreen();
+            welcomeScreen.Closed += (s, args) => this.Close();      // Can get very resource intensive - can maybe be reworked?
+            this.Close();
+        }
     }
 }
