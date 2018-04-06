@@ -138,18 +138,14 @@ namespace VehicleApp
         /// <summary>
         /// Opens the Communication channel.
         /// </summary>
-        public void Open()
-        {
-            connection.Open();
-        }
+        public void Open() => connection.Open();
+
+        public bool IsOpen() => connection.IsOpen();
 
         /// <summary>
         /// Closes the Communication channel.
         /// </summary>
-        public void Close()
-        {
-            connection.Close();
-        }
+        public void Close() => connection.Close();
 
         /// <summary>
         /// Changes the port that the application is using for connections.
