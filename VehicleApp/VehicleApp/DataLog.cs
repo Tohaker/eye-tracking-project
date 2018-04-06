@@ -22,8 +22,11 @@ namespace VehicleApp
             InitializeComponent();
             if ((controller == null) && (com != ""))     // Check if the controller object exists already
                 controller = new VehicleControl(com);
-            label1.Text = "Connected to" + com;
+            label1.Text = "Connected to " + com;
+            btnConnect.Text = "Disconnect";
+            
             EnableButtons(true);
+            cmbComSelect.Enabled = false;
         }
 
         private void cmbComSelect_DropDown(object sender, EventArgs e)
@@ -38,16 +41,19 @@ namespace VehicleApp
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
+            string selectedPort = "";
 
-            string selectedPort = cmbComSelect.SelectedItem.ToString();
+            if (cmbComSelect.SelectedItem != null)
+                selectedPort = cmbComSelect.SelectedItem.ToString();
 
             if (btnConnect.Text == "Connect")
             {
                 controller.ChangeConnection(selectedPort);
-                label1.Text = "Connected to" + selectedPort;
+                label1.Text = "Connected to " + selectedPort;
                 btnConnect.Text = "Disconnect";
 
                 EnableButtons(true);
+                cmbComSelect.Enabled = false;
             }
             else if (btnConnect.Text == "Disconnect")
             {
@@ -56,6 +62,7 @@ namespace VehicleApp
                 label1.Text = "Disconnected";
 
                 EnableButtons(false);
+                cmbComSelect.Enabled = true;
             }
             
         }
@@ -163,6 +170,25 @@ namespace VehicleApp
                 controller.ReceiveMessage();
                 rtbConsole.AppendText("Received: " + controller.ReceivedMessage + "\n");
             }            
+        }
+
+        private void btnSaveLog_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = "Text Files (*.txt)|*.txt|RTF Files (*.rtf)|*.rtf";
+            saveFileDialog1.AddExtension = true;
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                rtbConsole.SaveFile(saveFileDialog1.FileName, RichTextBoxStreamType.PlainText);
+            }
+        }
+
+        private void DataLog_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+            controller.Close();
+            Cursor.Current = Cursors.Default;
         }
     }
 }

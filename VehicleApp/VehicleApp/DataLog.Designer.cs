@@ -35,14 +35,15 @@
             this.btnSend = new System.Windows.Forms.Button();
             this.btnCmd1 = new System.Windows.Forms.Button();
             this.groupCommands = new System.Windows.Forms.GroupBox();
+            this.numSpeed = new System.Windows.Forms.NumericUpDown();
             this.btnCmd6 = new System.Windows.Forms.Button();
             this.btnCmd7 = new System.Windows.Forms.Button();
             this.btnCmd5 = new System.Windows.Forms.Button();
             this.btnCmd4 = new System.Windows.Forms.Button();
             this.btnCmd3 = new System.Windows.Forms.Button();
             this.btnCmd2 = new System.Windows.Forms.Button();
-            this.numSpeed = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnSaveLog = new System.Windows.Forms.Button();
             this.groupCommands.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numSpeed)).BeginInit();
             this.SuspendLayout();
@@ -119,6 +120,18 @@
             this.groupCommands.TabStop = false;
             this.groupCommands.Text = "Commands";
             // 
+            // numSpeed
+            // 
+            this.numSpeed.Location = new System.Drawing.Point(87, 167);
+            this.numSpeed.Maximum = new decimal(new int[] {
+            7,
+            0,
+            0,
+            0});
+            this.numSpeed.Name = "numSpeed";
+            this.numSpeed.Size = new System.Drawing.Size(73, 20);
+            this.numSpeed.TabIndex = 12;
+            // 
             // btnCmd6
             // 
             this.btnCmd6.Location = new System.Drawing.Point(6, 164);
@@ -179,18 +192,6 @@
             this.btnCmd2.UseVisualStyleBackColor = true;
             this.btnCmd2.Click += new System.EventHandler(this.btnCmd2_Click);
             // 
-            // numSpeed
-            // 
-            this.numSpeed.Location = new System.Drawing.Point(87, 167);
-            this.numSpeed.Maximum = new decimal(new int[] {
-            7,
-            0,
-            0,
-            0});
-            this.numSpeed.Name = "numSpeed";
-            this.numSpeed.Size = new System.Drawing.Size(73, 20);
-            this.numSpeed.TabIndex = 12;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -200,11 +201,22 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "Data Log";
             // 
-            // MainView
+            // btnSaveLog
+            // 
+            this.btnSaveLog.Location = new System.Drawing.Point(334, 8);
+            this.btnSaveLog.Name = "btnSaveLog";
+            this.btnSaveLog.Size = new System.Drawing.Size(75, 23);
+            this.btnSaveLog.TabIndex = 8;
+            this.btnSaveLog.Text = "Save Log";
+            this.btnSaveLog.UseVisualStyleBackColor = true;
+            this.btnSaveLog.Click += new System.EventHandler(this.btnSaveLog_Click);
+            // 
+            // DataLog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(418, 489);
+            this.Controls.Add(this.btnSaveLog);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupCommands);
             this.Controls.Add(this.btnSend);
@@ -214,8 +226,9 @@
             this.Controls.Add(this.cmbComSelect);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "MainView";
+            this.Name = "DataLog";
             this.Text = "Data Log";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DataLog_FormClosing);
             this.groupCommands.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numSpeed)).EndInit();
             this.ResumeLayout(false);
@@ -240,6 +253,7 @@
         private System.Windows.Forms.Button btnCmd6;
         private System.Windows.Forms.NumericUpDown numSpeed;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnSaveLog;
     }
 }
 
