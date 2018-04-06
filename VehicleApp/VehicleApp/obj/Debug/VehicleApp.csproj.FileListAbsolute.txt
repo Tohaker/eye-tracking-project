@@ -22,3 +22,4 @@ F:\Miles\Documents\Final Project GIT\VehicleApp\VehicleApp\obj\Debug\VehicleApp.
 F:\Miles\Documents\Final Project GIT\VehicleApp\VehicleApp\obj\Debug\VehicleApp.csproj.CopyComplete
 F:\Miles\Documents\Final Project GIT\VehicleApp\VehicleApp\obj\Debug\VehicleApp.exe
 F:\Miles\Documents\Final Project GIT\VehicleApp\VehicleApp\obj\Debug\VehicleApp.pdb
+F:\Miles\Documents\Final Project GIT\VehicleApp\VehicleApp\obj\Debug\VehicleApp.PasswordDialog.resources
