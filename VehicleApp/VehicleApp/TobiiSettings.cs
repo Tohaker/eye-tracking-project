@@ -20,14 +20,14 @@ namespace VehicleApp
 
         public int DwellTime { get { return dwellTime; } }
 
-        public TobiiSettings(int gt)
+        public TobiiSettings(int dt)
         {
             InitializeComponent();
 
             // Get the EyeX host.
             _eyeXHost = Program.EyeXHost;
 
-            dwellTime = gt;
+            dwellTime = dt;
 
             numDwellTime.Value = dwellTime;
             sliderDwellTime.Value = dwellTime;
@@ -87,6 +87,9 @@ namespace VehicleApp
         #region Gaze Time
         private void numDwellTime_ValueChanged(object sender, EventArgs e)
         {
+            if (numDwellTime.Value > sliderDwellTime.Maximum)
+                sliderDwellTime.Maximum = (int)numDwellTime.Value;
+
             sliderDwellTime.Value = (int)numDwellTime.Value;
             dwellTime = (int)numDwellTime.Value;
         }
