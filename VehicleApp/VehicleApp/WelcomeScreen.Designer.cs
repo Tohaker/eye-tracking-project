@@ -40,7 +40,7 @@
             this.cmbComSelect.FormattingEnabled = true;
             this.cmbComSelect.Location = new System.Drawing.Point(13, 13);
             this.cmbComSelect.Name = "cmbComSelect";
-            this.cmbComSelect.Size = new System.Drawing.Size(92, 21);
+            this.cmbComSelect.Size = new System.Drawing.Size(117, 21);
             this.cmbComSelect.TabIndex = 0;
             this.cmbComSelect.DropDown += new System.EventHandler(this.cmbComSelect_DropDown);
             // 
@@ -48,7 +48,7 @@
             // 
             this.btnConnect.Location = new System.Drawing.Point(13, 41);
             this.btnConnect.Name = "btnConnect";
-            this.btnConnect.Size = new System.Drawing.Size(92, 23);
+            this.btnConnect.Size = new System.Drawing.Size(117, 23);
             this.btnConnect.TabIndex = 1;
             this.btnConnect.Text = "Connect";
             this.btnConnect.UseVisualStyleBackColor = true;
@@ -57,7 +57,7 @@
             // btnAppStart
             // 
             this.btnAppStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAppStart.Location = new System.Drawing.Point(132, 13);
+            this.btnAppStart.Location = new System.Drawing.Point(173, 13);
             this.btnAppStart.Name = "btnAppStart";
             this.btnAppStart.Size = new System.Drawing.Size(81, 51);
             this.btnAppStart.TabIndex = 2;
@@ -69,7 +69,7 @@
             // 
             this.chkTobiiUserPresent.AutoSize = true;
             this.chkTobiiUserPresent.Enabled = false;
-            this.chkTobiiUserPresent.Location = new System.Drawing.Point(12, 88);
+            this.chkTobiiUserPresent.Location = new System.Drawing.Point(13, 77);
             this.chkTobiiUserPresent.Name = "chkTobiiUserPresent";
             this.chkTobiiUserPresent.Size = new System.Drawing.Size(95, 17);
             this.chkTobiiUserPresent.TabIndex = 3;
@@ -78,7 +78,7 @@
             // 
             // btnDemoMode
             // 
-            this.btnDemoMode.Location = new System.Drawing.Point(132, 71);
+            this.btnDemoMode.Location = new System.Drawing.Point(173, 71);
             this.btnDemoMode.Name = "btnDemoMode";
             this.btnDemoMode.Size = new System.Drawing.Size(81, 23);
             this.btnDemoMode.TabIndex = 4;
@@ -90,7 +90,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(225, 116);
+            this.ClientSize = new System.Drawing.Size(266, 116);
             this.Controls.Add(this.btnDemoMode);
             this.Controls.Add(this.chkTobiiUserPresent);
             this.Controls.Add(this.btnAppStart);
