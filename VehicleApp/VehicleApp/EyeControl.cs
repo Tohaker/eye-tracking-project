@@ -183,7 +183,7 @@ namespace VehicleApp
         private void developerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //TODO: Add password protect
-            DataLog devScreen = new DataLog();
+            DataLog devScreen = new DataLog(controller.COM_Port);
             devScreen.Show();
         }
 
@@ -297,10 +297,7 @@ namespace VehicleApp
 
         private void btnExitDemo_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            WelcomeScreen welcomeScreen = new WelcomeScreen();
-            welcomeScreen.Closed += (s, args) => this.Close();      // Can get very resource intensive - can maybe be reworked?
-            this.Close();
+            Application.Restart();  //Restarts the app, reduces resources used to keep forms open.
         }
     }
 }
