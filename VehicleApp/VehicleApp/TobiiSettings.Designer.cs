@@ -43,6 +43,7 @@
             // 
             this.chkUserPresent.AutoSize = true;
             this.chkUserPresent.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkUserPresent.Enabled = false;
             this.chkUserPresent.Location = new System.Drawing.Point(12, 12);
             this.chkUserPresent.Name = "chkUserPresent";
             this.chkUserPresent.Size = new System.Drawing.Size(93, 17);

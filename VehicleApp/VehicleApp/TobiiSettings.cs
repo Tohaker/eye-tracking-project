@@ -58,6 +58,8 @@ namespace VehicleApp
             {
                 MessageBox.Show("Could not connect to EyeX engine.");
             }
+
+            UpdateUserPresence(_eyeXHost.UserPresence);
         }
 
         private void EyeXHost_UserPresenceChanged(object sender, EngineStateValue<UserPresence> e)
