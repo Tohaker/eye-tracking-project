@@ -168,10 +168,10 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 498);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(409, 80);
+            this.label1.Size = new System.Drawing.Size(415, 80);
             this.label1.TabIndex = 6;
-            this.label1.Text = "Instructions:\r\nLook at the button you wish to \'click\'.\r\nHold you gaze on it until" +
-    " the border turns GREEN.\r\nObserve as the robot obeys your actions!";
+            this.label1.Text = "Instructions:\r\nLook at the button you wish to \'click\'.\r\nHold your gaze on it unti" +
+    "l the border turns GREEN.\r\nObserve as the robot obeys your actions!";
             // 
             // lblDemoMode
             // 

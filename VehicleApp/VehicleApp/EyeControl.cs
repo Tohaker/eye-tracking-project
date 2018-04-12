@@ -61,7 +61,11 @@ namespace VehicleApp
         {
             InitializeComponent();
 
+            brakeTime = dwellTime / 2;
+
             demoMode = true;
+            developerToolStripMenuItem.Enabled = false;
+            connectionSettingsToolStripMenuItem.Enabled = false;
             lblDemoMode.Text = "Demo Mode Active - Communications will be limited.";
             btnExitDemo.Enabled = true;
             btnExitDemo.Show();
