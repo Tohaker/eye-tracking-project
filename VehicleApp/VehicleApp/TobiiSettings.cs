@@ -112,5 +112,20 @@ namespace VehicleApp
                 Close();
             }
         }
+
+        private void btnTestCalibration_Click(object sender, EventArgs e)
+        {
+            _eyeXHost.LaunchCalibrationTesting();
+        }
+
+        private void btnRecalibrate_Click(object sender, EventArgs e)
+        {
+            _eyeXHost.LaunchRecalibration();
+        }
+
+        private void btnProfileCreate_Click(object sender, EventArgs e)
+        {
+            _eyeXHost.LaunchProfileCreation();
+        }
     }
 }

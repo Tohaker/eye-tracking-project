@@ -35,6 +35,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnRecalibrate = new System.Windows.Forms.Button();
+            this.btnTestCalibration = new System.Windows.Forms.Button();
+            this.btnProfileCreate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.sliderDwellTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDwellTime)).BeginInit();
             this.SuspendLayout();
@@ -112,11 +115,44 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "ms";
             // 
+            // btnRecalibrate
+            // 
+            this.btnRecalibrate.Location = new System.Drawing.Point(12, 244);
+            this.btnRecalibrate.Name = "btnRecalibrate";
+            this.btnRecalibrate.Size = new System.Drawing.Size(93, 23);
+            this.btnRecalibrate.TabIndex = 7;
+            this.btnRecalibrate.Text = "Recalibrate";
+            this.btnRecalibrate.UseVisualStyleBackColor = true;
+            this.btnRecalibrate.Click += new System.EventHandler(this.btnRecalibrate_Click);
+            // 
+            // btnTestCalibration
+            // 
+            this.btnTestCalibration.Location = new System.Drawing.Point(12, 215);
+            this.btnTestCalibration.Name = "btnTestCalibration";
+            this.btnTestCalibration.Size = new System.Drawing.Size(93, 23);
+            this.btnTestCalibration.TabIndex = 8;
+            this.btnTestCalibration.Text = "Test Calibration";
+            this.btnTestCalibration.UseVisualStyleBackColor = true;
+            this.btnTestCalibration.Click += new System.EventHandler(this.btnTestCalibration_Click);
+            // 
+            // btnProfileCreate
+            // 
+            this.btnProfileCreate.Location = new System.Drawing.Point(12, 273);
+            this.btnProfileCreate.Name = "btnProfileCreate";
+            this.btnProfileCreate.Size = new System.Drawing.Size(93, 23);
+            this.btnProfileCreate.TabIndex = 9;
+            this.btnProfileCreate.Text = "Create Profile";
+            this.btnProfileCreate.UseVisualStyleBackColor = true;
+            this.btnProfileCreate.Click += new System.EventHandler(this.btnProfileCreate_Click);
+            // 
             // TobiiSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(214, 308);
+            this.Controls.Add(this.btnProfileCreate);
+            this.Controls.Add(this.btnTestCalibration);
+            this.Controls.Add(this.btnRecalibrate);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.label2);
@@ -142,5 +178,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnRecalibrate;
+        private System.Windows.Forms.Button btnTestCalibration;
+        private System.Windows.Forms.Button btnProfileCreate;
     }
 }
