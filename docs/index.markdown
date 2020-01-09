@@ -11,9 +11,9 @@ Feel free to send any questions to Miles at the links on this page.
 
 ## Source Code
 
-Main Project Source: [Vehicle App](https://github.com/Tohaker/GazeAwareRobotics/VehicleApp)
+Main Project Source: [Vehicle App](https://github.com/Tohaker/GazeAwareRobotics/tree/master/VehicleApp)
 
-Test Programs: [Blink an LED](https://github.com/Tohaker/GazeAwareRobotics/LED_Blink), [WinForms App](https://github.com/Tohaker/GazeAwareRobotics/WinForms_LED_App)
+Test Programs: [Blink an LED](https://github.com/Tohaker/GazeAwareRobotics/tree/master/LED_Blink), [WinForms App](https://github.com/Tohaker/GazeAwareRobotics/tree/master/WinForms_LED_App)
 
 Firmware: [Gaze Aware Firmware](https://github.com/Tohaker/GazeAwareFirmware)
 
