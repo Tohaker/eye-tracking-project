@@ -5,16 +5,17 @@
 layout: home
 title: Project Thesis
 ---
+
 {% seo %}
-__Read the thesis [here](../project_thesis.pdf).__
+**Read the thesis [here]({{ site.github_repo }}/project_thesis.pdf).**
 
 Feel free to send any questions to Miles at the links on this page.
 
 ## Source Code
 
-Main Project Source: [Vehicle App](https://github.com/Tohaker/GazeAwareRobotics/tree/master/VehicleApp)
+Main Project Source: [Vehicle App]({{ site.github_repo }}/VehicleApp)
 
-Test Programs: [Blink an LED](https://github.com/Tohaker/GazeAwareRobotics/tree/master/LED_Blink), [WinForms App](https://github.com/Tohaker/GazeAwareRobotics/tree/master/WinForms_LED_App)
+Test Programs: [Blink an LED]({{ site.github_repo }}/LED_Blink), [WinForms App]({{ site.github_repo }}/WinForms_LED_App)
 
 Firmware: [Gaze Aware Firmware](https://github.com/Tohaker/GazeAwareFirmware)
 
