@@ -5,6 +5,7 @@
 layout: home
 title: Project Thesis
 ---
+{% seo %}
 __Read the thesis [here](../project_thesis.pdf).__
 
 Feel free to send any questions to Miles at the links on this page.
